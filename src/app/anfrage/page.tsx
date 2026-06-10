@@ -5,6 +5,7 @@
 import { useState, type FormEvent } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { supabase } from "@/lib/supabase";
 
 // Auswahl der Leistungen – passend zur Startseite.
 const LEISTUNGEN = [
@@ -20,13 +21,40 @@ export default function AnfragePage() {
   const router = useRouter();
   // Merkt sich, ob die Hilfe für eine andere Person ist.
   const [fuerAndere, setFuerAndere] = useState(false);
+  // Merkt sich, ob das Formular gerade abgeschickt wird (verhindert Doppelklick).
+  const [sendet, setSendet] = useState(false);
 
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    // Daten einsammeln. Noch keine Datenbank – wir geben sie nur aus.
+    setSendet(true);
+
+    // Eingaben aus dem Formular einsammeln.
     const daten = Object.fromEntries(new FormData(e.currentTarget).entries());
-    console.log("Neue Anfrage (noch nicht gespeichert):", daten);
-    // Weiter zur Bestätigungsseite.
+
+    // Anfrage in der Supabase-Datenbank speichern (Tabelle "anfragen").
+    const { error } = await supabase.from("anfragen").insert({
+      name: daten.name,
+      telefon: daten.telefon,
+      email: daten.email,
+      hilfe_fuer: daten.hilfe_fuer,
+      senior_name: daten.senior_name,
+      leistung: daten.leistung,
+      ort: daten.ort,
+      wunschdatum: daten.wunschdatum,
+      beschreibung: daten.beschreibung,
+    });
+
+    if (error) {
+      // Bei einem Fehler: Hinweis zeigen und auf der Seite bleiben.
+      console.error("Speichern fehlgeschlagen:", error);
+      alert(
+        "Es tut uns leid – das Absenden hat nicht geklappt. Bitte versuchen Sie es noch einmal."
+      );
+      setSendet(false);
+      return;
+    }
+
+    // Erfolg: weiter zur Bestätigungsseite.
     router.push("/danke");
   }
 
@@ -194,9 +222,10 @@ export default function AnfragePage() {
         {/* Absenden */}
         <button
           type="submit"
-          className="mt-2 rounded-xl bg-gold px-6 py-4 text-xl font-bold text-tinte shadow-sm transition-colors hover:bg-gold-dunkel"
+          disabled={sendet}
+          className="mt-2 rounded-xl bg-gold px-6 py-4 text-xl font-bold text-tinte shadow-sm transition-colors hover:bg-gold-dunkel disabled:cursor-not-allowed disabled:opacity-60"
         >
-          Anfrage absenden
+          {sendet ? "Wird gesendet …" : "Anfrage absenden"}
         </button>
       </form>
     </main>
