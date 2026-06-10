@@ -1,0 +1,108 @@
+Ideal Customer Profile
+
+HalloHilfe 
+
+ 
+
+Für: Vibe Coding Prototyp 
+
+Stand: 13.05.2026 
+
+ 
+
+Nutzerpersona 
+
+ 
+
+Wer ist diese Person: 
+
+Deutschsprachige Senioren zwischen 65–80 Jahren, pensioniert, leben selbstständig zuhause, nutzen Telefon, WhatsApp oder Smartphone, möchten unabhängig bleiben und gelegentlich Unterstützung im Alltag erhalten. 
+
+ 
+
+Jobs to be Done: 
+
+Alltag selbstständig organisieren, bei Bedarf unkompliziert Hilfe bekommen, Einkauf, Garten oder Technik bewältigen, Angehörige entlasten und weiterhin zuhause wohnen bleiben. 
+
+ 
+
+Ein Tag im Leben dieses Kunden: 
+
+Der Alltag besteht aus Einkaufen, Haushalt organisieren, Termine wahrnehmen, Telefonieren, WhatsApp nutzen, Gartenarbeit erledigen und Internetrecherche mit Google. Die Person ist verantwortlich für den eigenen Alltag und Haushalt. Ziel ist es, möglichst vieles selbst zu schaffen und trotzdem Sicherheit und Unterstützung bei Bedarf zu haben. 
+
+ 
+
+Herausforderungen und Pain Points: 
+
+Körperlich anstrengende Aufgaben werden mühsamer, Angehörige sind nicht immer verfügbar, Hilfe organisieren kostet Aufwand, Hilfe annehmen fühlt sich unangenehm an, es gibt Angst vor Hilflosigkeit oder Alleinsein und Unsicherheit gegenüber fremden Personen. 
+
+ 
+
+Kontext des Nutzers: 
+
+Genutzt werden Telefon, WhatsApp, Google und persönliche Empfehlungen. Unterstützung wird zuhause, beim Einkaufen, im Haushalt, bei Technikproblemen oder Terminen gebraucht. Der Kontakt entsteht über lokale Anbieter, Empfehlungen, Gemeindeangebote oder Familie. Ideal wäre eine einfache telefonische oder digitale Hilfeanfrage mit persönlichem Ansprechpartner und vertrauenswürdiger Unterstützung. 
+
+ 
+
+Inhalte, Menschen, Events: 
+
+ 
+
+Top Websites: 
+
+Google, Gemeinde-Webseiten, Seniorenportale, lokale Anbieter-Webseiten, Gesundheitsseiten. 
+
+ 
+
+Top Newsletter: 
+
+Gemeinde-Newsletter, Seniorenverein, lokale Zeitung, Gesundheitsangebote, Vereinsinformationen. 
+
+ 
+
+Top Podcasts: 
+
+Gesundheit, Alltag im Alter, Regionales, Familie, Gesellschaft. 
+
+ 
+
+Top Communities: 
+
+Familie, Nachbarschaft, Seniorenverein, Kirchengemeinde, lokale Gruppen. 
+
+ 
+
+Top Events: 
+
+Seniorentreffen, Gemeindeveranstaltungen, Vereinsanlässe, Gesundheitsvorträge, regionale Märkte. 
+
+ 
+
+Top YouTube Channels: 
+
+Technik einfach erklärt, Gesundheit im Alter, Alltagstipps, regionale Inhalte, WhatsApp-Erklärvideos. 
+
+ 
+
+Top Social Groups: 
+
+Familien-WhatsApp, Nachbarschaftsgruppen, lokale Facebook-Gruppen, Seniorenvereine, Gemeindegruppen. 
+
+ 
+
+Top Influencer: 
+
+Familie, Freunde, Nachbarn, Hausarzt, lokale Vertrauenspersonen. 
+
+ 
+
+Trigger zur Kaufabsicht: 
+
+Einkaufen wird körperlich anstrengend, Technikprobleme können nicht alleine gelöst werden, Angehörige haben keine Zeit oder der Alltag zuhause wird organisatorisch schwieriger. 
+
+ 
+
+Anti Patterns, Ausschlusskriterien 
+
+Wer ist kein ICP: 
+Senioren mit akutem Pflegebedarf, Personen, die medizinische Betreuung erwarten, und Menschen ohne Bereitschaft für persönliche Unterstützung oder fremde Hilfe. 

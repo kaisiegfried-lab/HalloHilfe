@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HalloHilfe Moodboard Varianten</title>
+  <style>
+    :root {
+      --radius: 26px;
+      --shadow: 0 18px 55px rgba(30, 39, 46, 0.13);
+      --line: rgba(30, 39, 46, 0.14);
+      --font-head: Georgia, 'Times New Roman', serif;
+      --font-body: Arial, Helvetica, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: var(--font-body);
+      background: #F7F2EA;
+      color: #22302A;
+      line-height: 1.55;
+    }
+
+    header {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 54px 24px 24px;
+    }
+
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 12px;
+      font-weight: 800;
+      opacity: 0.75;
+      margin-bottom: 12px;
+    }
+
+    h1, h2, h3, p { margin-top: 0; }
+
+    h1 {
+      font-family: var(--font-head);
+      font-size: clamp(38px, 6vw, 76px);
+      line-height: 1.05;
+      letter-spacing: -0.045em;
+      max-width: 920px;
+      margin-bottom: 18px;
+    }
+
+    .lead {
+      max-width: 760px;
+      color: rgba(34,48,42,0.72);
+      font-size: 20px;
+    }
+
+    main {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin: 18px 0 28px;
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      padding: 14px 0;
+      backdrop-filter: blur(18px);
+    }
+
+    .tab-button {
+      border: 1px solid var(--line);
+      background: white;
+      border-radius: 999px;
+      padding: 13px 18px;
+      font-weight: 800;
+      cursor: pointer;
+      color: #22302A;
+      transition: 0.2s ease;
+    }
+
+    .tab-button.active {
+      color: white;
+      background: #22302A;
+      transform: translateY(-2px);
+    }
+
+    .variant { display: none; }
+    .variant.active { display: block; }
+
+    .hero {
+      border-radius: 34px;
+      padding: 40px;
+      box-shadow: var(--shadow);
+      margin-bottom: 26px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero h2 {
+      font-family: var(--font-head);
+      font-size: clamp(32px, 5vw, 58px);
+      line-height: 1.07;
+      letter-spacing: -0.04em;
+      margin-bottom: 16px;
+      max-width: 820px;
+    }
+
+    .hero p { max-width: 760px; font-size: 18px; }
+
+    section {
+      background: rgba(255,255,255,0.72);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      margin-bottom: 24px;
+      overflow: hidden;
+    }
+
+    .section-head {
+      padding: 26px;
+      border-bottom: 1px solid var(--line);
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .section-head h2 {
+      font-family: var(--font-head);
+      font-size: 32px;
+      line-height: 1.1;
+      margin-bottom: 0;
+    }
+
+    .section-head p { color: rgba(34,48,42,0.7); margin-bottom: 0; }
+
+    .grid { display: grid; gap: 16px; padding: 26px; }
+    .grid-5 { grid-template-columns: repeat(5, 1fr); }
+    .grid-3 { grid-template-columns: repeat(3, 1fr); }
+    .grid-2 { grid-template-columns: repeat(2, 1fr); }
+
+    .card {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 22px;
+      min-height: 100%;
+    }
+
+    .card h3 {
+      font-family: var(--font-head);
+      font-size: 23px;
+      line-height: 1.15;
+      margin-bottom: 8px;
+    }
+
+    .card p { color: rgba(34,48,42,0.72); margin-bottom: 0; }
+
+    .swatch {
+      height: 110px;
+      border-radius: 18px;
+      margin-bottom: 14px;
+      border: 1px solid rgba(0,0,0,0.08);
+    }
+
+    .hex {
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      color: rgba(34,48,42,0.62);
+      margin-bottom: 8px;
+    }
+
+    .type-demo {
+      border-radius: 18px;
+      padding: 22px;
+      margin-bottom: 16px;
+      border: 1px solid var(--line);
+    }
+
+    .tag-row { display: flex; gap: 10px; flex-wrap: wrap; padding: 26px; }
+    .tag {
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: white;
+      padding: 11px 15px;
+      font-weight: 800;
+    }
+    .tag.no { background: #FFF0EB; color: #8D3F2C; }
+
+    .image-card {
+      min-height: 240px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .image-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      opacity: 0.95;
+    }
+
+    .mini-ui {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 22px;
+      padding: 34px;
+      border-radius: 30px;
+      margin-bottom: 36px;
+      align-items: center;
+      box-shadow: var(--shadow);
+    }
+
+    .mini-ui h2 { font-family: var(--font-head); font-size: 40px; line-height: 1.08; }
+    .button-list { display: grid; gap: 12px; }
+    .big-button {
+      border: none;
+      border-radius: 18px;
+      padding: 18px 20px;
+      text-align: left;
+      font-size: 18px;
+      font-weight: 900;
+      cursor: pointer;
+    }
+
+    .v2 { background: linear-gradient(135deg, #F8F1E8, #EAF2E9); }
+    .v2 .hero { background: #2F5D50; color: #FFF8EE; }
+    .v2 .hero p { color: rgba(255,248,238,0.82); }
+    .v2 .tab-button.active { background: #2F5D50; }
+    .v2 .image-card:nth-child(1)::before { background: linear-gradient(135deg, #E9C7A7, #F8F1E8); }
+    .v2 .image-card:nth-child(2)::before { background: linear-gradient(135deg, #9CB7A2, #F8F1E8); }
+    .v2 .image-card:nth-child(3)::before { background: linear-gradient(135deg, #D98B72, #F5D9C8); }
+
+    .v3 { background: linear-gradient(135deg, #EFF5F6, #FBF7EF); }
+    .v3 .hero { background: #204B63; color: #FFFFFF; }
+    .v3 .hero p { color: rgba(255,255,255,0.84); }
+    .v3 .tab-button.active { background: #204B63; }
+    .v3 .image-card:nth-child(1)::before { background: linear-gradient(135deg, #BFDDE4, #F7FBFC); }
+    .v3 .image-card:nth-child(2)::before { background: linear-gradient(135deg, #F3D9A4, #FFF8E8); }
+    .v3 .image-card:nth-child(3)::before { background: linear-gradient(135deg, #8BA6B1, #EAF3F5); }
+
+    @media (max-width: 920px) {
+      .section-head, .mini-ui { grid-template-columns: 1fr; }
+      .grid-5, .grid-3, .grid-2 { grid-template-columns: 1fr; }
+      .hero { padding: 28px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="eyebrow">HalloHilfe Moodboard Testvarianten</div>
+    <h1>Zwei visuelle Richtungen für Kundeninterviews</h1>
+    <p class="lead">Beide Varianten sind aus dem ICP abgeleitet: selbstständige Senioren, die Hilfe anfragen möchten, ohne sich bevormundet zu fühlen. Nutze sie im Interview, um emotionale Reaktionen auf Vertrauen, Einfachheit und Tonalität zu testen.</p>
+  </header>
+
+  <main>
+    <div class="tabs">
+      <button class="tab-button active" data-tab="v2">Variante 2: Zuhause & Nähe</button>
+      <button class="tab-button" data-tab="v3">Variante 3: Klar & sicher</button>
+    </div>
+
+    <div id="v2" class="variant active v2">
+      <div class="hero">
+        <div class="eyebrow">Variante 2</div>
+        <h2>Zuhause bleiben. Unterstützung bekommen. Selbst entscheiden.</h2>
+        <p>Diese Richtung wirkt warm, häuslich und sehr persönlich. Sie eignet sich, wenn HalloHilfe wie ein lokaler Vertrauensservice wirken soll – weniger digital, mehr Nachbarschaft und persönlicher Kontakt.</p>
+      </div>
+
+      <section>
+        <div class="section-head">
+          <h2>Farbpalette</h2>
+          <p>Die Palette greift Wohnlichkeit, Garten, Wärme und lokale Nähe auf. Sie soll die Hemmung senken, Hilfe anzunehmen.</p>
+        </div>
+        <div class="grid grid-5">
+          <div class="card"><div class="swatch" style="background:#2F5D50"></div><h3>Tannengrün</h3><div class="hex">#2F5D50</div><p>Steht für Stabilität, Nähe und Ruhe. Passt zu Senioren, die Verlässlichkeit statt Technikgefühl suchen.</p></div>
+          <div class="card"><div class="swatch" style="background:#F8F1E8"></div><h3>Wohnzimmer-Beige</h3><div class="hex">#F8F1E8</div><p>Wirkt vertraut und weich. Unterstützt das Gefühl: Hier geht es um Alltag, nicht um eine Behörde oder Klinik.</p></div>
+          <div class="card"><div class="swatch" style="background:#D98B72"></div><h3>Herzlicher Akzent</h3><div class="hex">#D98B72</div><p>Für Rückruf, Hilfe anfragen und persönliche Momente. Warm, aber nicht aufdringlich.</p></div>
+          <div class="card"><div class="swatch" style="background:#9CB7A2"></div><h3>Garten-Salbei</h3><div class="hex">#9CB7A2</div><p>Erinnert an Garten, Natur und ruhige Aktivität. Passt zu Hilfe ohne Pflegegefühl.</p></div>
+          <div class="card"><div class="swatch" style="background:#3A302B"></div><h3>Kaffee-Braun</h3><div class="hex">#3A302B</div><p>Für Text und Kontrast. Menschlicher als Schwarz und trotzdem gut lesbar.</p></div>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-head"><h2>Typografie</h2><p>Diese Richtung darf freundlich und etwas traditioneller wirken, ohne altmodisch zu sein.</p></div>
+        <div class="grid grid-2">
+          <div class="card"><div class="type-demo" style="background:#FFF8EF"><div style="font-family:Georgia,serif;font-size:34px;line-height:1.05;color:#2F5D50">Hilfe, wenn etwas alleine mühsam wird.</div><div style="font-family:Arial,sans-serif;margin-top:12px;color:#675A50">Ein Anruf genügt. Wir klären gemeinsam, wobei Unterstützung gebraucht wird.</div></div><h3>Georgia + Arial</h3><p>Würdevoll, vertraut und sehr gut lesbar. Ideal, wenn die Marke menschlich und ruhig wirken soll.</p></div>
+          <div class="card"><div class="type-demo" style="background:#FFF8EF"><div style="font-family:'Trebuchet MS',Arial,sans-serif;font-size:32px;font-weight:800;color:#2F5D50">Einfach fragen. Persönlich helfen.</div><div style="font-family:Verdana,sans-serif;margin-top:12px;color:#675A50">Für Einkauf, Garten, Technik oder Begleitung.</div></div><h3>Trebuchet MS + Verdana</h3><p>Etwas moderner und klarer. Gut für grosse Buttons und kurze, freundliche Texte.</p></div>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-head"><h2>Bildsprache</h2><p>Diese Bildwelt soll Selbstständigkeit und gemeinsame Alltagssituationen zeigen.</p></div>
+        <div class="grid grid-3">
+          <div class="card image-card"><h3>Zuhause & Alltag</h3><p>warm, echt, hell, ruhig, ungestellt. Eine Person zuhause, nicht als Patient dargestellt.</p></div>
+          <div class="card image-card"><h3>Gemeinsam statt hilflos</h3><p>respektvoll, aktiv, nahbar, partnerschaftlich. Garten machen, einkaufen, spazieren.</p></div>
+          <div class="card image-card"><h3>Lokaler Kontakt</h3><p>persönlich, vertraut, regional, freundlich. Rückruf, Begrüssung, Kennenlernen.</p></div>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-head"><h2>Tonalität</h2><p>Die Sprache soll wie ein guter Nachbar klingen: freundlich, direkt und ohne Druck.</p></div>
+        <div class="grid grid-2">
+          <div class="card"><h3>Soll klingen wie</h3><div class="tag-row" style="padding:0"><span class="tag">Herzlich</span><span class="tag">Persönlich</span><span class="tag">Geduldig</span><span class="tag">Vertraut</span><span class="tag">Bodenständig</span></div></div>
+          <div class="card"><h3>Soll nicht klingen wie</h3><div class="tag-row" style="padding:0"><span class="tag no">Klinisch</span><span class="tag no">Belehrend</span><span class="tag no">Jugendlich</span><span class="tag no">Anonym</span><span class="tag no">Übertrieben modern</span></div></div>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-head"><h2>Design-Referenzen</h2><p>Nicht aus der Branche, aber emotional passend: warm, vertraut, wertig, persönlich.</p></div>
+        <div class="grid grid-3">
+          <div class="card"><h3>Manufactum</h3><p>Steht für Wertigkeit, Beständigkeit und greifbare Alltagstauglichkeit. Passt zum Wunsch nach verlässlicher Hilfe.</p></div>
+          <div class="card"><h3>dm</h3><p>Wirkt niedrigschwellig, freundlich und alltagsnah. Vermittelt Hilfe ohne Luxus- oder Tech-Barriere.</p></div>
+          <div class="card"><h3>IKEA</h3><p>Zeigt Alltag, Zuhause und einfache Lösungen. Emotional passend, weil es um praktische Hilfe im eigenen Zuhause geht.</p></div>
+        </div>
+      </section>
+
+      <div class="mini-ui" style="background:#2F5D50;color:#FFF8EE">
+        <div><h2>Wobei dürfen wir helfen?</h2><p style="color:rgba(255,248,238,0.82)">Sie können anrufen oder eine kurze Anfrage senden. Wir melden uns persönlich zurück.</p></div>
+        <div class="button-list"><button class="big-button" style="background:#D98B72;color:white">☎ Rückruf wünschen</button><button class="big-button" style="background:#F8F1E8;color:#2F5D50">🛒 Einkauf</button><button class="big-button" style="background:#F8F1E8;color:#2F5D50">🌿 Garten</button></div>
+      </div>
+    </div>
+
+    <div id="v3" class="variant v3">
+      <div class="hero">
+        <div class="eyebrow">Variante 3</div>
+        <h2>Klar sehen, wer hilft. Schnell anfragen, wenn etwas ansteht.</h2>
+        <p>Diese Richtung wirkt strukturierter und sicherer. Sie eignet sich, wenn HalloHilfe als verlässlicher, professioneller Service mit klaren Abläufen getestet werden soll.</p>
+      </div>
+
+      <section>
+        <div class="section-head"><h2>Farbpalette</h2><p>Die Palette setzt stärker auf Klarheit, Sicherheit und Orientierung. Sie wirkt etwas digitaler, bleibt aber ruhig und seniorenfreundlich.</p></div>
+        <div class="grid grid-5">
+          <div class="card"><div class="swatch" style="background:#204B63"></div><h3>Vertrauensblau</h3><div class="hex">#204B63</div><p>Seriös, stabil und klar. Unterstützt das Bedürfnis, zu wissen, wer hilft und wie der Ablauf funktioniert.</p></div>
+          <div class="card"><div class="swatch" style="background:#EFF5F6"></div><h3>Klares Eisblau</h3><div class="hex">#EFF5F6</div><p>Gibt Raum und Ordnung. Hilft, dass die Oberfläche nicht überladen wirkt.</p></div>
+          <div class="card"><div class="swatch" style="background:#F3D9A4"></div><h3>Sanftes Lichtgelb</h3><div class="hex">#F3D9A4</div><p>Setzt freundliche Wärme in einer sonst klaren Farbwelt. Gut für Hinweise und positive Rückmeldungen.</p></div>
+          <div class="card"><div class="swatch" style="background:#8BA6B1"></div><h3>Ruhiges Nebelblau</h3><div class="hex">#8BA6B1</div><p>Wirkt sachlich, aber nicht kalt. Passt zu Status, Terminen und übersichtlicher Organisation.</p></div>
+          <div class="card"><div class="swatch" style="background:#263238"></div><h3>Tiefes Anthrazit</h3><div class="hex">#263238</div><p>Für hohe Lesbarkeit und klare Orientierung. Wichtig für ältere Nutzer auf mobilen Geräten.</p></div>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-head"><h2>Typografie</h2><p>Diese Richtung priorisiert maximale Lesbarkeit und einfache Orientierung.</p></div>
+        <div class="grid grid-2">
+          <div class="card"><div class="type-demo" style="background:#F8FCFD"><div style="font-family:Arial,sans-serif;font-size:34px;font-weight:900;line-height:1.05;color:#204B63">Hilfe anfragen in drei einfachen Schritten.</div><div style="font-family:Verdana,sans-serif;margin-top:12px;color:#52656D">Wählen Sie eine Aufgabe. Hinterlassen Sie Ihre Nummer. Wir rufen zurück.</div></div><h3>Arial Bold + Verdana</h3><p>Sehr klar, stabil und praktisch. Gut, wenn Interviews zeigen, dass Orientierung wichtiger ist als emotionale Wärme.</p></div>
+          <div class="card"><div class="type-demo" style="background:#F8FCFD"><div style="font-family:Georgia,serif;font-size:34px;line-height:1.05;color:#204B63">Persönliche Hilfe, klar organisiert.</div><div style="font-family:Arial,sans-serif;margin-top:12px;color:#52656D">Sie wissen, wer sich meldet und was als Nächstes passiert.</div></div><h3>Georgia + Arial</h3><p>Kombiniert Seriosität mit Menschlichkeit. Gut für Vertrauen, ohne zu technisch zu wirken.</p></div>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-head"><h2>Bildsprache</h2><p>Diese Bildwelt betont Orientierung, Sicherheit und nachvollziehbare Abläufe.</p></div>
+        <div class="grid grid-3">
+          <div class="card image-card"><h3>Klare Handlung</h3><p>geordnet, hell, ruhig, direkt, verständlich. Hand auf Telefon, grosser Button, klare Auswahl.</p></div>
+          <div class="card image-card"><h3>Sicherheit im Ablauf</h3><p>strukturiert, vertrauensvoll, nachvollziehbar, seriös. Rückruf, Termin, bestätigte Hilfe.</p></div>
+          <div class="card image-card"><h3>Lokale Verlässlichkeit</h3><p>freundlich, professionell, nah, zuverlässig, unaufgeregt. Person mit Gesicht und Namen.</p></div>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-head"><h2>Tonalität</h2><p>Die Sprache soll Sicherheit geben und Schritt für Schritt führen.</p></div>
+        <div class="grid grid-2">
+          <div class="card"><h3>Soll klingen wie</h3><div class="tag-row" style="padding:0"><span class="tag">Klar</span><span class="tag">Sicher</span><span class="tag">Verlässlich</span><span class="tag">Ruhig</span><span class="tag">Geführt</span></div></div>
+          <div class="card"><h3>Soll nicht klingen wie</h3><div class="tag-row" style="padding:0"><span class="tag no">Unverbindlich</span><span class="tag no">Verspielt</span><span class="tag no">Überladen</span><span class="tag no">Bürokratisch</span><span class="tag no">Kalt</span></div></div>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-head"><h2>Design-Referenzen</h2><p>Nicht aus der Branche, aber emotional passend: Orientierung, Vertrauen und einfache Bedienung.</p></div>
+        <div class="grid grid-3">
+          <div class="card"><h3>Gov.uk</h3><p>Sehr klare Nutzerführung, einfache Sprache und reduziertes Design. Passend für Menschen, die nicht rätseln wollen.</p></div>
+          <div class="card"><h3>N26</h3><p>Klarer digitaler Ablauf, reduzierte Oberfläche und viel Orientierung. Emotional: Kontrolle und Übersicht.</p></div>
+          <div class="card"><h3>Doctolib</h3><p>Starke Termin- und Vertrauensorientierung. Passend, weil Nutzer wissen wollen, wer sich meldet und was der nächste Schritt ist.</p></div>
+        </div>
+      </section>
+
+      <div class="mini-ui" style="background:#204B63;color:white">
+        <div><h2>Hilfe in wenigen Schritten anfragen</h2><p style="color:rgba(255,255,255,0.84)">1. Aufgabe wählen. 2. Telefonnummer angeben. 3. Persönlichen Rückruf erhalten.</p></div>
+        <div class="button-list"><button class="big-button" style="background:#F3D9A4;color:#204B63">☎ Rückruf erhalten</button><button class="big-button" style="background:#EFF5F6;color:#204B63">📱 Technik-Hilfe</button><button class="big-button" style="background:#EFF5F6;color:#204B63">📅 Begleitung</button></div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const buttons = document.querySelectorAll('.tab-button');
+    const variants = document.querySelectorAll('.variant');
+
+    buttons.forEach(button => {
+      button.addEventListener('click', () => {
+        const target = button.dataset.tab;
+        buttons.forEach(b => b.classList.remove('active'));
+        variants.forEach(v => v.classList.remove('active'));
+        button.classList.add('active');
+        document.getElementById(target).classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+  </script>
+</body>
+</html>

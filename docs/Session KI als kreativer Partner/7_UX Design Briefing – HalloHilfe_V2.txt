@@ -1,0 +1,375 @@
+# UX Design Briefing – HalloHilfe
+
+**Version:** Mai 2026  
+**Stand:** Vibe Coding Bootcamp – Digitale Leute School  
+
+---
+
+## Kontext
+
+Dieses Briefing dient als Grundlage für den Vibe Coding Prototypen von HalloHilfe. Es integriert die Erkenntnisse aus ersten Nutzerinterviews mit Angehörigen und Senioren sowie die strategischen Artefakte aus Modul 1 des Bootcamps.
+
+HalloHilfe ist ein persönlicher Alltagshilfe-Service für Senioren in der Region Konstanz. Der Gründer bietet Unterstützung bei Einkauf, Garten, Technik, Begleitung und kleinen Erledigungen an.
+
+> **Wichtigste Interview-Erkenntnis:** Senioren entscheiden selbst. Angehörige sind Vermittler, aber nicht die primäre Zielgruppe für die App. Telefon bleibt der bevorzugte Kontaktkanal.
+
+---
+
+## 1. Ideal Customer Profile und JTBD
+
+### Zielgruppe
+
+Deutschsprachige Senioren zwischen 65 und 80 Jahren, die:
+
+- selbstständig zuhause leben
+- möglichst lange unabhängig bleiben möchten
+- Telefon, WhatsApp oder Smartphone einfach nutzen
+- gelegentlich Unterstützung im Alltag benötigen
+- Angehörige nicht ständig belasten möchten
+- fremde Hilfe nur annehmen, wenn Vertrauen entsteht
+
+### Jobs to be Done
+
+> Wenn alltägliche Aufgaben körperlich oder organisatorisch mühsamer werden, möchte der Senior schnell, einfach und vertrauenswürdig Unterstützung bekommen, damit er weiterhin selbstständig zuhause leben kann.
+
+### Typische Alltagssituationen
+
+- Einkauf wird anstrengend
+- Gartenarbeit ist körperlich zu schwer
+- Technikprobleme können nicht allein gelöst werden
+- Begleitung zu Terminen wird benötigt
+- Kleine Erledigungen fallen schwer
+- Angehörige sind nicht immer verfügbar
+
+### Zentrale Pain Points
+
+- Hilfe annehmen fühlt sich unangenehm an
+- Fremde Helfer wirken unsicher
+- Senioren möchten nicht als pflegebedürftig wahrgenommen werden
+- Digitale Plattformen wirken oft zu kompliziert
+- Hilfe zu organisieren kostet zu viel Aufwand
+
+---
+
+## 2. Gewünschtes Gefühl und wichtigste Nutzerhandlung
+
+### Zentrale Emotion
+
+> „Ich bin nicht allein. Ich kann Hilfe bekommen, ohne mich hilflos zu fühlen."
+
+### Designwirkung
+
+| Soll wirken wie | Soll nicht wirken wie |
+|---|---|
+| Ruhig | Technisch überfordernd |
+| Persönlich | Klinisch |
+| Einfach | Anonym |
+| Vertrauenswürdig | Belehrend |
+| Lokal und menschlich | Wie ein Pflegedienst |
+
+### Wichtigste Nutzerhandlung (Primary Conversion)
+
+Eine konkrete Hilfeanfrage absenden oder einen Rückruf anfordern.
+
+Idealer Flow:
+
+1. Senior öffnet HalloHilfe
+2. Klickt auf „Ich brauche Hilfe" oder die Telefonnummer
+3. Wählt eine Hilfekategorie
+4. Beschreibt sein Anliegen kurz (optional)
+5. Wählt Rückruf, Telefon oder WhatsApp
+6. Erhält eine klare Bestätigung
+
+---
+
+## 3. Benötigte Screens
+
+### Screen 1: Startseite (wichtigster Screen)
+
+**Ziel:** Senior versteht in 5 Sekunden: Wobei hilft HalloHilfe? Was soll ich tun? Wie bekomme ich Hilfe?
+
+**Muss-Elemente:**
+
+- Großer Hauptbutton: „Ich brauche Hilfe"
+- Telefonnummer prominent sichtbar (primärer Kanal laut Interviews)
+- WhatsApp-Button als zweite Option
+- Hilfekategorien als große Kacheln: Einkauf, Technik, Garten, Begleitung, Kleine Erledigungen
+- Kurzer Vertrauenstext mit Name und Foto des Anbieters
+- Klarer Hinweis: kein Pflegedienst, kein Notfall
+
+> **UX-Regel:** Ein Senior muss ohne Erklärung erkennen, wo er klicken soll. Maximal eine Hauptaktion pro Screen.
+
+---
+
+### Screen 2: Hilfekategorie auswählen
+
+**Ziel:** Senior wählt einfach aus, wobei er Unterstützung benötigt.
+
+**Kategorien:**
+
+- Einkauf: Hilfe beim Einkaufen oder kleine Besorgungen
+- Garten: Rasenmähen, Gießen, leichte Gartenarbeiten
+- Technik: Hilfe bei Handy, WLAN, Drucker oder Fernseher
+- Begleitung: Mitfahren oder Begleitung zu Terminen
+- Kleine Erledigungen: Post, Abholungen, Botengänge
+
+**Darstellung:**
+
+- Großes Icon pro Kategorie
+- Kurze Beschreibung in einfacher Sprache
+- Großer Button
+- Keine verschachtelte Navigation
+
+---
+
+### Screen 3: Anliegen beschreiben
+
+**Ziel:** Senior beschreibt kurz was gebraucht wird, ohne Pflichtfeld-Stress.
+
+**Elemente:**
+
+- Großes Texteingabefeld
+- Hilfetext: „Beschreiben Sie kurz, wobei wir helfen können"
+- Beispiel-Vorschläge als Tipp-Hilfe
+- Weiter-Button auch ohne Text (Anruf klärt den Rest)
+- Wunschdatum optional
+
+---
+
+### Screen 4: Kontaktweg wählen
+
+**Ziel:** Senior wählt seinen bevorzugten Kontaktweg. Telefon steht an erster Stelle.
+
+**Elemente:**
+
+- Option 1 (hervorgehoben): Rückruf anfordern
+- Option 2: Direkt anrufen (Telefonnummer klickbar)
+- Option 3: WhatsApp schreiben
+- Optional: Angehörige informieren
+
+> **Aus den Interviews:** Senioren bevorzugen Telefon. Die Rückruf-Option senkt die Hemmschwelle am stärksten.
+
+---
+
+### Screen 5: Bestätigung
+
+**Ziel:** Senior weiß: Anfrage ist angekommen, jemand meldet sich persönlich.
+
+**Elemente:**
+
+- Klare Bestätigung: „Ihre Anfrage ist angekommen"
+- Erwartungsmanagement: „Ich melde mich persönlich bei Ihnen"
+- Name und Foto des Anbieters
+- Telefonnummer nochmals sichtbar
+
+---
+
+### Screen 6: Admin Dashboard (für den Anbieter)
+
+**Ziel:** Anbieter verwaltet alle Anfragen effizient an einem Ort.
+
+**Funktionen:**
+
+- Liste aller Anfragen mit Status
+- Status: Neu, In Prüfung, Bestätigt, Erledigt, Abgelehnt
+- Detailansicht pro Anfrage
+- Interne Notizen
+- Kundenübersicht
+- Einfache Terminnotiz
+
+---
+
+## 4. Design-Spezifikationen
+
+### Farbpalette (Variante 2: Zuhause und Nähe)
+
+| Farbe | HEX | Verwendung |
+|---|---|---|
+| Tannengrün | #2F5D50 | Primärfarbe, Buttons, Headlines |
+| Wohnzimmer-Beige | #F8F1E8 | Hintergrund |
+| Herzlicher Akzent | #D98B72 | CTA-Button Rückruf und Hilfeanfrage |
+| Garten-Salbei | #9CB7A2 | Kategoriekacheln, sekundäre Elemente |
+| Kaffee-Braun | #3A302B | Fließtext |
+
+### Typografie
+
+- Headlines: Georgia (Serif), ab 32px, Farbe #2F5D50
+- Body: Trebuchet MS oder Arial, min. 18px
+- Buttons: Fett, 18-20px
+- Zeilenhöhe: 1.55
+- Keine Schriftgröße unter 16px
+
+### Abstände und Layout
+
+- Mobile-first: 390px Basisbreite
+- Button-Mindesthöhe: 56px
+- Kacheln: min. 120px Höhe mit Icon
+- Padding innen: 20-24px
+- Sektionsabstand: 40-48px
+- Maximale Zeilenlänge: 65 Zeichen
+
+### Barrierefreiheit
+
+- Kontrastverhältnis: min. 4.5:1 für Text
+- Buttons immer mit Text, kein reines Icon
+- Keine rein farbliche Statuskommunikation
+- Touch-Targets: min. 44x44px
+
+---
+
+## 5. Tonalität und Sprache
+
+| Soll klingen wie | Soll nicht klingen wie |
+|---|---|
+| Herzlich | Klinisch |
+| Persönlich | Belehrend |
+| Geduldig | Technisch |
+| Bodenständig | Anonym |
+| Direkt | Wie ein Pflegedienst |
+
+**Beispiele:**
+
+- „Wobei darf ich Ihnen helfen?"
+- „Ich melde mich persönlich bei Ihnen."
+- „Kein Problem, wir klären das gemeinsam."
+- „Einkauf wird manchmal anstrengend, das kenne ich."
+
+---
+
+## 6. Validierte Erkenntnisse und offene Annahmen
+
+### Aus ersten Interviews bestätigt
+
+- Senioren entscheiden selbst, welche Hilfe sie annehmen
+- Angehörige sind Begleiter, nicht Entscheider
+- Telefon ist der bevorzugte Erstkontakt
+- Selbstständigkeit ist das zentrale emotionale Bedürfnis
+
+### Noch zu validieren
+
+| Annahme | Risiko |
+|---|---|
+| Senioren nehmen Hilfe von Fremden an, wenn Vertrauen durch persönlichen Kontakt entsteht | 🔴 Hoch |
+| Senioren fragen Hilfe selbst an, ohne Angehörige als Vermittler | 🔴 Hoch |
+| Zahlungsbereitschaft ist vorhanden | 🔴 Hoch |
+| Einkauf, Garten, Technik und Begleitung decken den wichtigsten Bedarf | 🟡 Mittel |
+| App ergänzt den Anruf, ersetzt ihn aber nicht | 🟡 Mittel |
+
+---
+
+## 7. Inhaltlicher Kern und USP
+
+### Was muss der Nutzer glauben, damit er handelt?
+
+> „Hier hilft mir jemand persönlich und verlässlich, ohne dass ich ein Pflegefall bin."
+
+Das ist die eine Überzeugung, die entstehen muss bevor ein Senior den Rückruf-Button drückt. Alles andere ist sekundär.
+
+### Wie wird das im Design sichtbar?
+
+- Foto und Name des Anbieters auf der Startseite, kein anonymes Logo
+- Persönlicher Begrüßungstext in der ersten Person: „Ich bin [Name], ich helfe Ihnen gern."
+- Konkrete Leistungen statt abstrakter Versprechen
+- Klarer Hinweis was HalloHilfe nicht ist: kein Pflegedienst, kein Notfallservice
+- Bestätigungsseite mit persönlicher Rückmeldung, nicht automatisierter Systemantwort
+
+---
+
+## 8. Vorhandene Inhalte und was noch fehlt
+
+### Bereits vorhanden
+
+- Farbpalette und Moodboard (Variante 2: Zuhause und Nähe)
+- Leistungskategorien und Beschreibungen
+- Rechtliche Abgrenzungstexte (kein Pflegedienst, kein Notfall)
+- ICP, Vision, Produktprinzipien und Strategie als Markdown
+- UX Design Briefing
+
+### Noch zu produzieren
+
+- Foto des Anbieters für Vertrauensbereich und Bestätigungsseite
+- Logo oder Wortmarke HalloHilfe
+- Icons für die 5 Hilfekategorien
+- Konkrete Beispieltexte für Anliegen-Eingabefeld
+- Telefonnummer und WhatsApp-Kontakt des Anbieters
+- Datenschutzerklärung und Impressum
+
+---
+
+## 9. Design-Inspirationen für den ICP
+
+Nicht aus der Branche, aber emotional passend für Senioren zwischen 65 und 80 Jahren:
+
+### Manufactum
+
+Steht für Verlässlichkeit, Beständigkeit und greifbare Qualität. Passt zum Wunsch nach einem Anbieter dem man vertrauen kann. Konkret inspirierend: warme Farbwelt, würdevolle Typografie, kein digitaler Überfluss.
+
+### dm
+
+Wirkt niedrigschwellig, freundlich und alltagsnah. Keine Barriere, keine Techniksprache. Konkret inspirierend: klare Kategorien, große Schrift, einfache Navigation.
+
+### Doctolib
+
+Starke Vertrauens- und Terminfokussierung. Nutzer wissen immer wer sich meldet und was als nächstes passiert. Konkret inspirierend: persönliche Anbieterprofile, klarer nächster Schritt nach der Anfrage.
+
+---
+
+## 10. Was HalloHilfe ausdrücklich nicht sein soll
+
+### Designrichtungen bewusst vermeiden
+
+| Nicht so | Warum |\n|---|---|\n| Startup-App-Ästhetik | Wirkt fremd und technisch für die Zielgruppe |\n| Pflege- und Klinik-Look | Löst Abwehr aus, Senioren wollen keine Pflegebedürftigkeit signalisieren |\n| Anonyme Plattform-Logik | Kein Marketplace, kein Algorithmus, kein Bewertungssystem im Vordergrund |\n| Überladene Navigation | Mehr als drei Menüpunkte überfordern die Zielgruppe |\n| Grelle Farben oder hoher Kontrast-Schock | Wirkt aufdringlich statt beruhigend |\n| Chatbot-Feeling | Senioren wollen mit einer Person sprechen, nicht mit einer Maschine |
+
+### Konkrete Klischees vermeiden
+
+- Kein „Senioren mit Tablet"-Stockfoto
+- Keine Blaulicht- oder Notfall-Ikonografie
+- Keine übertriebenen Sicherheitsversprechen
+- Keine langen Einleitungstexte vor der ersten Handlung
+- Kein Login-Zwang für die Hilfeanfrage
+
+---
+
+## 11. Technische Rahmenbedingungen
+
+### Stack
+
+- Frontend: React / Next.js
+- Styling: Tailwind CSS
+- Backend: Supabase
+- Auth: Supabase Auth (nur Admin)
+- Hosting: Vercel
+- Tool: Lovable für Prototyp
+
+### Scope MVP
+
+- Kein Kundenlogin
+- Kein automatisches Buchungssystem
+- Keine Online-Zahlung
+- Keine echte KI-Anbindung im ersten Prototyp
+- Statische oder simulierte Antworten genügen
+
+---
+
+## 12. Erfolgskriterien für den Prototyp
+
+- Senior versteht nach 5 Sekunden worum es geht
+- Senior findet ohne Erklärung den Rückruf-Button
+- Anfrage kann ohne Login abgesendet werden
+- Admin sieht neue Anfragen im Dashboard
+- Produkt wirkt vertrauenswürdig, nicht wie ein Pflegedienst
+- Nutzbar auf Smartphone ohne Einschränkungen
+
+---
+
+## Nächste Schritte
+
+1. 3-5 weitere Interviews mit Senioren (Fokus: Vertrauen und Zahlungsbereitschaft)
+2. Lovable-Prompt erstellen basierend auf diesem Briefing
+3. Prototyp mit Screen 1-4 bauen
+4. Prototyp im Nutzertest zeigen
+5. Living Document in Notion pflegen
+
+---
+
+*HalloHilfe UX Design Briefing | Vibe Coding Bootcamp 2026 | Digitale Leute School*

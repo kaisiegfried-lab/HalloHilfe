@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# BMAD-Framework (Fremd-Download, nur als Nachschlagewerk geparkt)
+/docs/bmad/

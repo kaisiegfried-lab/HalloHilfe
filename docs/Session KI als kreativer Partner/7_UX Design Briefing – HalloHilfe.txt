@@ -1,0 +1,167 @@
+# UX Design Briefing – HalloHilfe
+
+## Kontext
+
+Dieses UX Design Briefing dient als Grundlage für einen Vibe Coding Prototypen von **HalloHilfe**.
+
+HalloHilfe ist eine einfache, vertrauenswürdige Alltagshilfe-Plattform für Senioren. Die Plattform unterstützt ältere Menschen dabei, unkompliziert Hilfe bei Alltagsthemen wie Einkauf, Technik, Garten, Begleitung oder kleinen Erledigungen anzufragen.
+
+Der Fokus liegt nicht auf komplexer Technologie, sondern auf **Vertrauen, Einfachheit, lokaler Nähe und Selbstständigkeit**.
+
+---
+
+## 1. Ideal Customer Profile, JTBD und Kontext
+
+### Zielgruppe
+
+Deutschsprachige Senioren zwischen ca. 65 und 80 Jahren, die:
+
+- selbstständig zuhause leben
+- möglichst lange unabhängig bleiben möchten
+- einfache digitale Kontaktwege wie Telefon, WhatsApp oder Smartphone nutzen
+- gelegentlich Unterstützung im Alltag benötigen
+- Angehörige nicht ständig belasten möchten
+- fremde Hilfe nur annehmen, wenn Vertrauen entsteht
+
+### Jobs to be Done
+
+Wenn alltägliche Aufgaben körperlich oder organisatorisch mühsamer werden, möchte der Senior schnell, einfach und vertrauenswürdig Unterstützung bekommen, damit er weiterhin selbstständig zuhause leben kann und seine Angehörigen entlastet werden.
+
+### Typische Alltagssituationen
+
+- Einkauf wird anstrengend
+- Gartenarbeit ist körperlich zu schwer
+- Technikprobleme können nicht allein gelöst werden
+- Begleitung zu Terminen wird benötigt
+- kleine Erledigungen fallen schwer
+- Angehörige sind nicht immer verfügbar
+- Hilfe zu organisieren kostet zu viel Aufwand
+
+### Bestehendes Verhalten
+
+Heute lösen Senioren solche Situationen häufig über:
+
+- Telefonate mit Familie
+- WhatsApp-Nachrichten
+- Nachbarn
+- Bekannte
+- lokale Empfehlungen
+- Gemeindeangebote
+- Google-Suche
+
+### Zentrale Pain Points
+
+- Hilfe suchen ist aufwendig
+- digitale Plattformen wirken kompliziert
+- fremde Helfer wirken unsicher
+- Hilfe anzunehmen fühlt sich teilweise unangenehm an
+- Angehörige sind nicht immer erreichbar
+- die Angst vor Hilflosigkeit oder Alleinsein steigt
+- Senioren möchten nicht als pflegebedürftig wahrgenommen werden
+
+---
+
+## 2. Gewünschtes Gefühl und wichtigste Nutzerhandlung
+
+### Zentrale Emotion
+
+Das Design soll vor allem **Erleichterung durch Vertrauen** auslösen.
+
+Der Nutzer soll denken:
+
+> „Ich bin nicht allein. Ich kann Hilfe bekommen, ohne mich hilflos zu fühlen.“
+
+### Designwirkung
+
+Das Produkt soll sich anfühlen wie:
+
+- ruhig
+- persönlich
+- einfach
+- vertrauenswürdig
+- lokal
+- respektvoll
+- menschlich
+- nicht technisch überfordernd
+
+### Wichtigste Handlung
+
+Die wichtigste Conversion ist:
+
+> Eine konkrete Hilfeanfrage absenden oder einen Rückruf anfordern.
+
+Wenn der Prototyp nur eine erfolgreiche Handlung ermöglichen kann, dann soll es diese sein:
+
+1. Der Nutzer öffnet HalloHilfe.
+2. Der Nutzer klickt auf „Ich brauche Hilfe“.
+3. Der Nutzer wählt eine Hilfekategorie.
+4. Der Nutzer beschreibt sein Anliegen einfach.
+5. Der Nutzer wählt Rückruf, Telefon oder WhatsApp.
+6. Der Nutzer erhält eine klare Bestätigung.
+
+---
+
+## 3. Benötigte Bereiche und Screens
+
+## Wichtigster Screen: Startseite
+
+Die Startseite ist der wichtigste Bereich des Produkts.
+
+### Ziel
+
+Der Nutzer soll innerhalb weniger Sekunden verstehen:
+
+- Wobei kann mir HalloHilfe helfen?
+- Was muss ich als Nächstes tun?
+- Wie bekomme ich echte Hilfe?
+
+### Elemente
+
+- Grosser Hauptbutton: „Ich brauche Hilfe“
+- Hilfekategorien als grosse Kacheln:
+  - Einkauf
+  - Technik
+  - Garten
+  - Begleitung
+  - Kleine Erledigungen
+- Kontaktoptionen:
+  - Rückruf anfordern
+  - Anrufen
+  - WhatsApp schreiben
+- Optional:
+  - Angehörige informieren
+
+### UX-Regel
+
+Ein Senior muss ohne Erklärung erkennen, wo er klicken soll.
+
+---
+
+## Screen 2: Hilfekategorie auswählen
+
+### Ziel
+
+Der Nutzer wählt einfach aus, wobei er Unterstützung benötigt.
+
+### Kategorien
+
+- Einkauf
+- Technik
+- Garten
+- Begleitung
+- Kleine Erledigungen
+
+### Darstellung
+
+Jede Kategorie sollte enthalten:
+
+- grosses Icon
+- kurze Beschreibung
+- grosser Button
+- einfache Sprache
+
+### Beispiel
+
+```text
+Technik
+Hilfe bei Handy, WLAN, Drucker oder Fernseher.

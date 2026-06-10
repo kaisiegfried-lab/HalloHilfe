@@ -1,0 +1,66 @@
+# Playing to Win Strategie – Version 1 
+
+## Fokus: Senioren als direkte Nutzer 
+
+ 
+
+### 1. Winning Aspiration 
+
+HalloHilfe will die einfachste und vertrauenswürdigste Möglichkeit werden, 
+mit der selbstständige Senioren lokale Alltagshilfe anfragen können – so einfach wie ein Anruf oder eine WhatsApp-Nachricht. 
+
+ 
+
+### 2. Where to Play 
+
+- Zielgruppe: selbstständige Senioren zwischen 65 und 80 Jahren 
+
+- Region: lokale und regionale Seniorenhilfe-Angebote 
+
+- Nutzungssituationen: Einkauf, Garten, Technik, Begleitung, kleine Erledigungen 
+
+- Kontaktkanäle: Telefon, WhatsApp und einfache mobile App 
+
+- Nicht im Fokus: medizinische Pflege, Notrufsysteme, komplexe Betreuungssoftware 
+
+ 
+
+### 3. How to Win 
+
+- Extrem einfache Bedienung mit klaren Hilfe-Kategorien 
+
+- Persönlicher Erstkontakt statt anonyme Plattform 
+
+- Lokale Anbieter mit vertrauenswürdigem Auftreten 
+
+- Kombination aus digitaler Anfrage und menschlicher Rückmeldung 
+
+- Hilfe wird als Unterstützung zur Selbstständigkeit positioniert, nicht als Pflege 
+
+ 
+
+### 4. Core Capabilities 
+
+- Seniorenfreundliches UX-Design 
+
+- Einfache Anfrage- und Rückruffunktion 
+
+- Lokale Anbieter- und Terminverwaltung 
+
+- Vertrauensaufbau durch klare Anbieterinformationen 
+
+- Integration vertrauter Kontaktwege wie Telefon und WhatsApp 
+
+ 
+
+### 5. Management Systems 
+
+- Regelmässige Discovery-Interviews mit Senioren 
+
+- Messung wiederkehrender Hilfeanfragen 
+
+- Feedback nach jedem Einsatz 
+
+- Auswertung häufiger Hilfe-Kategorien 
+
+- Kontinuierliche Vereinfachung des Nutzerflows

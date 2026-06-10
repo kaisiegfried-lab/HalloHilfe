@@ -1,0 +1,180 @@
+# Produktprinzipien – HalloHilfe
+## Für den Vibe Coding Prototyp
+
+Diese Produktprinzipien leiten unsere Produktentscheidungen. Sie helfen uns, den Prototyp fokussiert, nutzerzentriert und passend zur Vision von HalloHilfe zu entwickeln.
+
+---
+
+## 1. Hilfe muss so einfach sein wie ein Anruf
+
+Senioren sollen Unterstützung anfragen können, ohne sich durch komplizierte Abläufe kämpfen zu müssen.
+
+**Das bedeutet für den Prototyp:**
+- Telefon und WhatsApp als zentrale Kontaktwege berücksichtigen
+- Keine komplizierte Registrierung im ersten Schritt
+- Grosse, klare Buttons
+- Wenige Schritte bis zur Anfrage
+- Einfache Sprache statt technischer Begriffe
+
+**Entscheidungsfrage:**  
+Macht diese Funktion die Hilfeanfrage einfacher oder komplizierter?
+
+---
+
+## 2. Vertrauen kommt vor Technologie
+
+Senioren nehmen Hilfe nur an, wenn sie wissen, wer hilft und warum sie dieser Person vertrauen können.
+
+**Das bedeutet für den Prototyp:**
+- Persönliche Informationen zum Anbieter sichtbar machen
+- Lokale Nähe betonen
+- Persönlichen Rückruf ermöglichen
+- Keine anonyme Plattformwirkung erzeugen
+- Klar zeigen, was nach einer Anfrage passiert
+
+**Entscheidungsfrage:**  
+Stärkt diese Funktion Vertrauen oder wirkt sie anonym?
+
+---
+
+## 3. Selbstständigkeit statt Hilfsbedürftigkeit
+
+HalloHilfe soll Senioren unterstützen, ohne ihnen das Gefühl zu geben, abhängig oder pflegebedürftig zu sein.
+
+**Das bedeutet für den Prototyp:**
+- Hilfe als Alltagserleichterung positionieren
+- Keine Pflege- oder Notfall-Sprache verwenden
+- Senioren behalten Kontrolle über Anfrage und Entscheidung
+- Tonalität respektvoll und stärkend formulieren
+- Angehörige optional einbinden, nicht automatisch übersteuern
+
+**Entscheidungsfrage:**  
+Fühlt sich diese Funktion nach Selbstbestimmung oder nach Bevormundung an?
+
+---
+
+## 4. Persönlich und lokal schlägt anonym und allgemein
+
+Die Stärke von HalloHilfe liegt in lokaler Nähe, persönlicher Unterstützung und greifbaren Ansprechpartnern.
+
+**Das bedeutet für den Prototyp:**
+- Lokale Anbieter klar hervorheben
+- Rückruf und persönliches Kennenlernen ermöglichen
+- Keine Marketplace-Logik in den Vordergrund stellen
+- Hilfe als menschlichen Service zeigen
+- Vertrauen über Nähe, Namen und klare Kommunikation aufbauen
+
+**Entscheidungsfrage:**  
+Macht diese Funktion den Service persönlicher und lokaler?
+
+---
+
+## 5. Erst konkrete Alltagshilfe, dann Zusatzfunktionen
+
+Der Prototyp muss zuerst echte Alltagssituationen lösen: Einkauf, Garten, Technik, Begleitung und kleine Erledigungen.
+
+**Das bedeutet für den Prototyp:**
+- Fokus auf wenige, verständliche Hilfekategorien
+- Keine überladenen Feature-Sets
+- Kein komplexes Buchungssystem im ersten MVP
+- Keine unnötigen KI-Spielereien
+- Jede Funktion muss einen klaren Alltagsnutzen haben
+
+**Entscheidungsfrage:**  
+Löst diese Funktion ein konkretes Alltagsproblem?
+
+---
+
+## 6. Angehörige entlasten, aber Senioren im Zentrum behalten
+
+Angehörige sind wichtig für Sicherheit und Organisation. Trotzdem bleibt der Senior der zentrale Nutzer.
+
+**Das bedeutet für den Prototyp:**
+- Senioren können selbst Hilfe anfragen
+- Angehörige können optional eingebunden werden
+- Status und Termine können transparent gemacht werden
+- Keine automatische Entmündigung durch Angehörigen-Logik
+- Kommunikation bleibt einfach und respektvoll
+
+**Entscheidungsfrage:**  
+Unterstützt diese Funktion Angehörige, ohne Senioren die Kontrolle zu nehmen?
+
+---
+
+## 7. Weniger Auswahl, mehr Klarheit
+
+Seniorenfreundliches Design bedeutet nicht mehr Funktionen, sondern weniger Unsicherheit.
+
+**Das bedeutet für den Prototyp:**
+- Wenige Hauptaktionen
+- Ein klarer nächster Schritt pro Screen
+- Kurze Texte
+- Verständliche Begriffe
+- Visuelle Ruhe
+- Keine unnötigen Einstellungen
+
+**Entscheidungsfrage:**  
+Ist sofort klar, was als Nächstes zu tun ist?
+
+---
+
+## 8. Menschliche Rückmeldung ist Teil des Produkts
+
+HalloHilfe ist kein rein digitales Self-Service-Tool. Der persönliche Kontakt ist ein zentraler Vertrauensmoment.
+
+**Das bedeutet für den Prototyp:**
+- Rückrufoption prominent anbieten
+- Anfragebestätigung klar formulieren
+- Erwartung transparent machen: „Wir melden uns persönlich zurück“
+- Anbieter kann persönlich reagieren
+- Digitale Anfrage darf nicht ins Leere laufen
+
+**Entscheidungsfrage:**  
+Gibt diese Funktion dem Nutzer das Gefühl, dass sich wirklich jemand kümmert?
+
+---
+
+## 9. Sicherheit ohne falsche Notfallversprechen
+
+HalloHilfe darf Sicherheit vermitteln, aber keine medizinische Notruf- oder Pflegefunktion versprechen.
+
+**Das bedeutet für den Prototyp:**
+- Keine Notfalllogik als Kernfeature
+- Keine medizinischen Versprechen
+- Klare Abgrenzung zu Pflege und Notruf
+- Alltagshilfe klar benennen
+- Bei kritischen Fällen auf passende Stellen verweisen
+
+**Entscheidungsfrage:**  
+Ist diese Funktion rechtlich und emotional sauber abgegrenzt?
+
+---
+
+## 10. Der Prototyp validiert Verhalten, nicht Meinungen
+
+Der Vibe Coding Prototyp soll zeigen, ob Senioren wirklich handeln würden – nicht nur, ob sie die Idee sympathisch finden.
+
+**Das bedeutet für den Prototyp:**
+- Anfrageflow testbar machen
+- Kontaktpräferenz abfragen
+- Häufigste Hilfekategorien messen
+- Abbruchpunkte beobachten
+- Rückmeldung nach konkreten Aufgaben sammeln
+
+**Entscheidungsfrage:**  
+Hilft diese Funktion dabei, echtes Nutzerverhalten zu testen?
+
+---
+
+# Kurzfassung der Produktprinzipien
+
+1. Hilfe muss so einfach sein wie ein Anruf.  
+2. Vertrauen kommt vor Technologie.  
+3. Selbstständigkeit statt Hilfsbedürftigkeit.  
+4. Persönlich und lokal schlägt anonym und allgemein.  
+5. Erst konkrete Alltagshilfe, dann Zusatzfunktionen.  
+6. Angehörige entlasten, aber Senioren im Zentrum behalten.  
+7. Weniger Auswahl, mehr Klarheit.  
+8. Menschliche Rückmeldung ist Teil des Produkts.  
+9. Sicherheit ohne falsche Notfallversprechen.  
+10. Der Prototyp validiert Verhalten, nicht Meinungen.
