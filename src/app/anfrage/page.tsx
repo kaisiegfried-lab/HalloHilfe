@@ -31,6 +31,14 @@ export default function AnfragePage() {
     // Eingaben aus dem Formular einsammeln.
     const daten = Object.fromEntries(new FormData(e.currentTarget).entries());
 
+    // Spam-Schutz (Honeypot): Das Feld "website" ist für Menschen unsichtbar.
+    // Ist es ausgefüllt, war es ein Bot – wir speichern nichts und schicken
+    // keine Mail, tun aber so, als hätte alles geklappt.
+    if (daten.website) {
+      router.push("/danke");
+      return;
+    }
+
     // Anfrage in der Supabase-Datenbank speichern (Tabelle "anfragen").
     const { error } = await supabase.from("anfragen").insert({
       name: daten.name,
@@ -90,6 +98,20 @@ export default function AnfragePage() {
       </p>
 
       <form onSubmit={handleSubmit} className="mt-6 flex flex-col gap-5">
+        {/* Spam-Falle (Honeypot): für Menschen unsichtbar – weit aus dem Bild
+            geschoben und vor Screenreadern/Tab-Taste versteckt. Nur Bots
+            füllen dieses Feld aus, echte Besucher sehen es nie. */}
+        <div aria-hidden="true" className="absolute left-[-9999px] top-[-9999px]">
+          <label htmlFor="website">Bitte dieses Feld leer lassen</label>
+          <input
+            id="website"
+            name="website"
+            type="text"
+            tabIndex={-1}
+            autoComplete="off"
+          />
+        </div>
+
         {/* Name */}
         <div>
           <label htmlFor="name" className={labelKlasse}>

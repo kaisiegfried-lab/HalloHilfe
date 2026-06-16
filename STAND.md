@@ -6,8 +6,8 @@ _Letzter Stand: 16.06.2026_
 Projekt bis zum **Go-live** bringen. Angepasste Roadmap (11 Meilensteine):
 1–2 Fundament + Admin-Login ✅ · 3 Dashboard **+ Filter** ✅ · 4 Detailansicht ✅ ·
 5 E-Mail-Benachrichtigung ✅ · 6 Anfrageformular ✅ (geprüft, bewusst schlank gehalten) ·
-7 Recht: Datenschutz + Impressum ✅ · **8 Spam-Schutz Formular 🟡 (als Nächstes)** ·
-9 Design & UX + SEO/Favicon/Fehlerseite · 10 Test & Korrekturen · 11 Veröffentlichung.
+7 Recht: Datenschutz + Impressum ✅ · 8 Spam-Schutz (Honeypot) ✅ ·
+**9 Design & UX + SEO/Favicon/Fehlerseite 🟡 (als Nächstes)** · 10 Test & Korrekturen · 11 Veröffentlichung.
 
 ## ✅ Fertig
 - Öffentlicher Bereich komplett: Start, Leistungen, Anfrage, Danke, Über-mich, Kontakt.
@@ -26,10 +26,15 @@ Projekt bis zum **Go-live** bringen. Angepasste Roadmap (11 Meilensteine):
   - Stolperstein gelöst: 42501 trat auf, weil im **eingeloggten** Browser der Insert als
     `authenticated` lief (keine Insert-Policy). Fix: Insert-Policy auf Rolle `public` umgestellt.
 
-## 🟡 ALS NÄCHSTES — Meilenstein 8: Spam-Schutz fürs Formular
-Anfrageformular gegen automatische Spam-Einsendungen absichern (z.B. Honeypot-Feld als
-einfachste, datenschutzfreundliche Lösung; alternativ Rate-Limit oder Captcha). Umfang
-mit Kai klären — für ein kleines privates Projekt reicht meist ein Honeypot.
+## ✅ Meilenstein 8: Spam-Schutz (Honeypot)
+Im Anfrageformular (`src/app/anfrage/page.tsx`) ein für Menschen unsichtbares Feld `website`
+(absolut aus dem Bild geschoben, `aria-hidden`, `tabIndex={-1}`). Ist es beim Absenden
+ausgefüllt → Bot: nichts speichern, keine Mail, aber zur Danke-Seite leiten (Bot merkt nichts).
+
+## 🟡 ALS NÄCHSTES — Meilenstein 9: Design/UX + SEO + Favicon + Fehlerseite
+Feinschliff vor Go-live: einheitliches Design/UX prüfen (große Buttons, Kontraste, mobile-first),
+SEO-Grundlagen (sinnvolle Seitentitel/Beschreibungen je Seite), eigenes Favicon, und eine
+freundliche 404-Fehlerseite (`src/app/not-found.tsx`). Umfang mit Kai klären.
 
 ## ⚠️ Dev-Server (wichtig!)
 - Immer nur EINEN `npm run dev` laufen lassen. Bei „Jest worker / EPIPE"-Fehlern oder
