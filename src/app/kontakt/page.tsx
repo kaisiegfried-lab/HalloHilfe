@@ -1,9 +1,9 @@
 import Link from "next/link";
 
 // Kontaktseite – die einfachsten Wege, mich zu erreichen.
-const TELEFON_ANZEIGE = "07531 · 90 22 14";
-const TELEFON_LINK = "tel:+497531902214";
-const EMAIL = "kontakt@hallohilfe.de";
+const TELEFON_ANZEIGE = "07531 2099788";
+const TELEFON_LINK = "tel:+4975312099788";
+const EMAIL = "kai.siegfried@gmail.com";
 
 export default function KontaktPage() {
   return (

@@ -1,8 +1,8 @@
 import Link from "next/link";
 
 // Telefonnummer zentral definiert – wird an mehreren Stellen genutzt.
-const TELEFON_ANZEIGE = "07531 · 90 22 14";
-const TELEFON_LINK = "tel:+497531902214";
+const TELEFON_ANZEIGE = "07531 2099788";
+const TELEFON_LINK = "tel:+4975312099788";
 
 // Leistungen als Daten-Array. So können wir sie später auch auf der
 // Leistungsseite und im Anfrageformular wiederverwenden.
