@@ -1,4 +1,12 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+
+// Eigener Seitentitel + Beschreibung für Browser-Tab und Suchmaschinen.
+export const metadata: Metadata = {
+  title: "Leistungen – HalloHilfe",
+  description:
+    "Womit ich helfe: Einkauf, Garten, Technik, Begleitung und kleine Erledigungen – persönliche Alltagshilfe in Konstanz.",
+};
 
 // Leistungsübersicht – erklärt jede Hilfe-Art verständlich.
 // Daten als Array, damit wir sie leicht erweitern können.

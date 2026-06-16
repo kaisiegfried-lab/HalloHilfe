@@ -1,4 +1,12 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+
+// Eigener Seitentitel + Beschreibung für Browser-Tab und Suchmaschinen.
+export const metadata: Metadata = {
+  title: "Über mich – HalloHilfe",
+  description:
+    "Lernen Sie kennen, wer hinter HalloHilfe steht – persönliche Alltagshilfe für Senioren und Angehörige in Konstanz.",
+};
 
 // Über-mich-Seite – schafft Vertrauen und gibt der Hilfe ein Gesicht.
 // Die Texte sind Platzhalter und können von Kai angepasst werden.

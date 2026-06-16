@@ -1,4 +1,12 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+
+// Eigener Titel; "robots: index false", damit diese Bestätigungsseite
+// nicht in Google-Suchergebnissen auftaucht.
+export const metadata: Metadata = {
+  title: "Danke – HalloHilfe",
+  robots: { index: false },
+};
 
 // Bestätigungsseite nach dem Absenden einer Anfrage.
 // Schafft Vertrauen: persönliche Rückmeldung statt automatischer Buchung.

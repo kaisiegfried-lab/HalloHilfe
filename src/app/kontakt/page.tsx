@@ -1,4 +1,12 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+
+// Eigener Seitentitel + Beschreibung für Browser-Tab und Suchmaschinen.
+export const metadata: Metadata = {
+  title: "Kontakt – HalloHilfe",
+  description:
+    "So erreichen Sie mich – telefonisch oder per Anfrage. Persönliche Alltagshilfe in Konstanz und Umgebung.",
+};
 
 // Kontaktseite – die einfachsten Wege, mich zu erreichen.
 const TELEFON_ANZEIGE = "07531 2099788";

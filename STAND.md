@@ -6,8 +6,8 @@ _Letzter Stand: 16.06.2026_
 Projekt bis zum **Go-live** bringen. Angepasste Roadmap (11 Meilensteine):
 1–2 Fundament + Admin-Login ✅ · 3 Dashboard **+ Filter** ✅ · 4 Detailansicht ✅ ·
 5 E-Mail-Benachrichtigung ✅ · 6 Anfrageformular ✅ (geprüft, bewusst schlank gehalten) ·
-7 Recht: Datenschutz + Impressum ✅ · 8 Spam-Schutz (Honeypot) ✅ ·
-**9 Design & UX + SEO/Favicon/Fehlerseite 🟡 (als Nächstes)** · 10 Test & Korrekturen · 11 Veröffentlichung.
+7 Recht: Datenschutz + Impressum ✅ · 8 Spam-Schutz (Honeypot) ✅ · 9 Design/SEO/Favicon/404 ✅ ·
+**10 Test & Korrekturen 🟡 (als Nächstes)** · 11 Veröffentlichung.
 
 ## ✅ Fertig
 - Öffentlicher Bereich komplett: Start, Leistungen, Anfrage, Danke, Über-mich, Kontakt.
@@ -31,10 +31,21 @@ Im Anfrageformular (`src/app/anfrage/page.tsx`) ein für Menschen unsichtbares F
 (absolut aus dem Bild geschoben, `aria-hidden`, `tabIndex={-1}`). Ist es beim Absenden
 ausgefüllt → Bot: nichts speichern, keine Mail, aber zur Danke-Seite leiten (Bot merkt nichts).
 
-## 🟡 ALS NÄCHSTES — Meilenstein 9: Design/UX + SEO + Favicon + Fehlerseite
-Feinschliff vor Go-live: einheitliches Design/UX prüfen (große Buttons, Kontraste, mobile-first),
-SEO-Grundlagen (sinnvolle Seitentitel/Beschreibungen je Seite), eigenes Favicon, und eine
-freundliche 404-Fehlerseite (`src/app/not-found.tsx`). Umfang mit Kai klären.
+## ✅ Meilenstein 9: Design/SEO/Favicon/404
+- SEO-Titel + Beschreibung je öffentlicher Seite (leistungen, ueber-mich, kontakt, danke).
+  `/danke` zusätzlich `robots: index false`. `/anfrage` ist Client Component → Titel via
+  neues `src/app/anfrage/layout.tsx`. Start erbt Root-Titel.
+- Eigenes Favicon `src/app/icon.svg` (burgundes „H" auf Gold, Markenfarben). Altes
+  Next.js-`favicon.ico` gelöscht (mit Kais Zustimmung).
+- Freundliche 404-Seite `src/app/not-found.tsx` (Statuscode 404 bestätigt).
+- Design/UX-Durchgang: Seiten sind konsistent. Zwei kosmetische Punkte bewusst SO GELASSEN
+  (Kai-Entscheidung): öffentlicher Footer erscheint auch im Admin; Startseiten-Ende hat
+  Abschluss-Satz direkt über dem Footer.
+
+## 🟡 ALS NÄCHSTES — Meilenstein 10: Test & Korrekturen
+Gesamte App vor Go-live durchtesten: alle Seiten/Links, Anfrage absenden (Speichern + Mail),
+Admin-Login + Status/Notiz, Honeypot, 404, mobile Ansicht. Gefundene Fehler beheben.
+Idee: visueller Durchgang per Browser-Preview/Screenshots.
 
 ## ⚠️ Dev-Server (wichtig!)
 - Immer nur EINEN `npm run dev` laufen lassen. Bei „Jest worker / EPIPE"-Fehlern oder
