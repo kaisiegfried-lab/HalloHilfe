@@ -90,8 +90,11 @@ export default function Home() {
         <p className="mt-1 text-sm text-tinte-hell">Botengänge</p>
       </Link>
 
-      {/* 5. Anbieter-Karte */}
-      <div className="mt-3 flex items-center gap-3 rounded-2xl border border-creme-dunkel bg-white p-4 shadow-sm">
+      {/* 5. Anbieter-Karte – führt zur Über-mich-Seite (Vertrauen schaffen) */}
+      <Link
+        href="/ueber-mich"
+        className="mt-3 flex items-center gap-3 rounded-2xl border border-creme-dunkel bg-white p-4 shadow-sm transition-colors hover:border-burgund"
+      >
         <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-gold font-bold text-tinte">
           KS
         </div>
@@ -101,7 +104,7 @@ export default function Home() {
             Hilft in Konstanz · Mo–Sa · 8 bis 19 Uhr
           </p>
         </div>
-      </div>
+      </Link>
 
       {/* 6. Footer-Satz */}
       <p className="mt-8 text-center text-sm text-tinte-hell">

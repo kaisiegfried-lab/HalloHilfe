@@ -7,7 +7,7 @@ Projekt bis zum **Go-live** bringen. Angepasste Roadmap (11 Meilensteine):
 1–2 Fundament + Admin-Login ✅ · 3 Dashboard **+ Filter** ✅ · 4 Detailansicht ✅ ·
 5 E-Mail-Benachrichtigung ✅ · 6 Anfrageformular ✅ (geprüft, bewusst schlank gehalten) ·
 7 Recht: Datenschutz + Impressum ✅ · 8 Spam-Schutz (Honeypot) ✅ · 9 Design/SEO/Favicon/404 ✅ ·
-**10 Test & Korrekturen 🟡 (als Nächstes)** · 11 Veröffentlichung.
+10 Test & Korrekturen ✅ · **11 Veröffentlichung 🟡 (als Nächstes – letzter Schritt!)**
 
 ## ✅ Fertig
 - Öffentlicher Bereich komplett: Start, Leistungen, Anfrage, Danke, Über-mich, Kontakt.
@@ -42,10 +42,21 @@ ausgefüllt → Bot: nichts speichern, keine Mail, aber zur Danke-Seite leiten (
   (Kai-Entscheidung): öffentlicher Footer erscheint auch im Admin; Startseiten-Ende hat
   Abschluss-Satz direkt über dem Footer.
 
-## 🟡 ALS NÄCHSTES — Meilenstein 10: Test & Korrekturen
-Gesamte App vor Go-live durchtesten: alle Seiten/Links, Anfrage absenden (Speichern + Mail),
-Admin-Login + Status/Notiz, Honeypot, 404, mobile Ansicht. Gefundene Fehler beheben.
-Idee: visueller Durchgang per Browser-Preview/Screenshots.
+## ✅ Meilenstein 10: Test & Korrekturen (16.06.)
+Kompletter Durchgang bestanden: alle Seiten laden, keine toten Links, Anfrage→Speichern+Mail,
+Admin (Login/Filter/Status/Notiz/Abmelden), 404, Honeypot (Code geprüft), mobile Ansicht.
+Gefundener + behobener Fehler: `/ueber-mich` war verwaist (kein Link) → jetzt verlinkt über
+Anbieter-Karte auf Startseite + Footer-Link.
+
+## 🟡 ALS NÄCHSTES — Meilenstein 11: Veröffentlichung (letzter Schritt!)
+App online stellen bei **Vercel** (kostenlos, nativ für Next.js). Schritte grob:
+1. Vercel-Konto (mit GitHub verbinden), Repo `kaisiegfried-lab/HalloHilfe` importieren.
+2. **Umgebungsvariablen** in Vercel eintragen (aus `.env.local`): `NEXT_PUBLIC_SUPABASE_URL`,
+   `NEXT_PUBLIC_SUPABASE_ANON_KEY`, `RESEND_API_KEY`. (Kai macht das, .env ist gesperrt.)
+3. Deployen → Test-URL prüfen.
+4. Domain bei ALL-INKL per DNS auf Vercel zeigen lassen.
+Hinweise: Resend läuft im Test-Modus (sendet nur an kai.siegfried@gmail.com) – für echten
+Versand an andere Adressen später eigene Domain bei Resend verifizieren.
 
 ## ⚠️ Dev-Server (wichtig!)
 - Immer nur EINEN `npm run dev` laufen lassen. Bei „Jest worker / EPIPE"-Fehlern oder

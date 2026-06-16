@@ -39,14 +39,17 @@ export default function RootLayout({
             Erscheint auf allen Seiten, da im Root-Layout. */}
         <footer className="border-t border-creme-dunkel px-5 py-6 text-center text-sm text-tinte-hell">
           <nav className="flex flex-wrap justify-center gap-x-4 gap-y-1">
+            <Link href="/ueber-mich" className="hover:text-burgund">
+              Über mich
+            </Link>
+            <Link href="/kontakt" className="hover:text-burgund">
+              Kontakt
+            </Link>
             <Link href="/impressum" className="hover:text-burgund">
               Impressum
             </Link>
             <Link href="/datenschutz" className="hover:text-burgund">
               Datenschutz
-            </Link>
-            <Link href="/kontakt" className="hover:text-burgund">
-              Kontakt
             </Link>
           </nav>
           <p className="mt-3">© {new Date().getFullYear()} HalloHilfe · Konstanz</p>
