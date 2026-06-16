@@ -46,12 +46,26 @@ export default function AnfragePage() {
 
     if (error) {
       // Bei einem Fehler: Hinweis zeigen und auf der Seite bleiben.
-      console.error("Speichern fehlgeschlagen:", error);
+      // .message ausgeben, weil Supabase-Fehler sonst nur als leeres {} erscheinen.
+      console.error("Speichern fehlgeschlagen:", error.message);
       alert(
         "Es tut uns leid – das Absenden hat nicht geklappt. Bitte versuchen Sie es noch einmal."
       );
       setSendet(false);
       return;
+    }
+
+    // Den Anbieter per E-Mail über die neue Anfrage informieren.
+    // Schlägt der Versand fehl, ist die Anfrage trotzdem gespeichert –
+    // deshalb blockiert dieser Schritt den Ablauf nicht.
+    try {
+      await fetch("/api/notify", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(daten),
+      });
+    } catch (benachrichtigungsFehler) {
+      console.error("Benachrichtigung fehlgeschlagen:", benachrichtigungsFehler);
     }
 
     // Erfolg: weiter zur Bestätigungsseite.
