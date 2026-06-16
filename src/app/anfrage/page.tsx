@@ -218,10 +218,17 @@ export default function AnfragePage() {
           />
         </div>
 
-        {/* Zustimmung Kontaktaufnahme */}
+        {/* Zustimmung Kontaktaufnahme + Datenschutzhinweis */}
         <label className="flex items-start gap-3 text-base">
           <input type="checkbox" name="zustimmung" required className="mt-1 h-5 w-5" />
-          <span>Ich bin damit einverstanden, dass ich zwecks Rückmeldung kontaktiert werde.</span>
+          <span>
+            Ich bin damit einverstanden, dass ich zwecks Rückmeldung kontaktiert
+            werde. Meine Angaben werden gemäß{" "}
+            <Link href="/datenschutz" className="text-burgund underline">
+              Datenschutzerklärung
+            </Link>{" "}
+            verarbeitet.
+          </span>
         </label>
 
         {/* Disclaimer */}
