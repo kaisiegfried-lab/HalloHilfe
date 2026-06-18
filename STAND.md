@@ -1,13 +1,16 @@
 # Projektstand HalloHilfe
 
-_Letzter Stand: 16.06.2026_
+_Letzter Stand: 18.06.2026_
 
 ## 🎯 Ziel
 Projekt bis zum **Go-live** bringen. Angepasste Roadmap (11 Meilensteine):
 1–2 Fundament + Admin-Login ✅ · 3 Dashboard **+ Filter** ✅ · 4 Detailansicht ✅ ·
 5 E-Mail-Benachrichtigung ✅ · 6 Anfrageformular ✅ (geprüft, bewusst schlank gehalten) ·
 7 Recht: Datenschutz + Impressum ✅ · 8 Spam-Schutz (Honeypot) ✅ · 9 Design/SEO/Favicon/404 ✅ ·
-10 Test & Korrekturen ✅ · **11 Veröffentlichung 🟡 (als Nächstes – letzter Schritt!)**
+10 Test & Korrekturen ✅ · **11 Veröffentlichung ✅ (live auf Vercel!)**
+
+➡️ **Alle 11 Meilensteine erledigt – die App ist live.** Offen bleibt nur die
+eigene Domain (ALL-INKL per DNS auf Vercel), das macht Kai später selbst.
 
 ## ✅ Fertig
 - Öffentlicher Bereich komplett: Start, Leistungen, Anfrage, Danke, Über-mich, Kontakt.
@@ -48,15 +51,27 @@ Admin (Login/Filter/Status/Notiz/Abmelden), 404, Honeypot (Code geprüft), mobil
 Gefundener + behobener Fehler: `/ueber-mich` war verwaist (kein Link) → jetzt verlinkt über
 Anbieter-Karte auf Startseite + Footer-Link.
 
-## 🟡 ALS NÄCHSTES — Meilenstein 11: Veröffentlichung (letzter Schritt!)
-App online stellen bei **Vercel** (kostenlos, nativ für Next.js). Schritte grob:
-1. Vercel-Konto (mit GitHub verbinden), Repo `kaisiegfried-lab/HalloHilfe` importieren.
-2. **Umgebungsvariablen** in Vercel eintragen (aus `.env.local`): `NEXT_PUBLIC_SUPABASE_URL`,
-   `NEXT_PUBLIC_SUPABASE_ANON_KEY`, `RESEND_API_KEY`. (Kai macht das, .env ist gesperrt.)
-3. Deployen → Test-URL prüfen.
-4. Domain bei ALL-INKL per DNS auf Vercel zeigen lassen.
-Hinweise: Resend läuft im Test-Modus (sendet nur an kai.siegfried@gmail.com) – für echten
+## ✅ Meilenstein 11: Veröffentlichung (18.06.) — LIVE auf Vercel
+App läuft online unter **https://hallo-hilfe.vercel.app**. Erledigt:
+1. Vercel-Konto mit GitHub verbunden, Repo `kaisiegfried-lab/HalloHilfe` importiert.
+2. Umgebungsvariablen in Vercel eingetragen: `NEXT_PUBLIC_SUPABASE_URL`,
+   `NEXT_PUBLIC_SUPABASE_ANON_KEY`, `RESEND_API_KEY`.
+3. Deployt, Live-URL geprüft (Start, Anfrage, Admin-Login laden fehlerfrei).
+- **Build-Fix nötig:** `docs`-Ordner in `tsconfig.json` von der TypeScript-Prüfung
+  ausgeschlossen (`"exclude": ["node_modules", "docs"]`), weil fremde Dateien in
+  `docs/bmad` (BMAD-METHOD) den Production-Build abbrechen ließen.
+**Noch offen (Kai, später):** eigene Domain bei ALL-INKL per DNS auf Vercel zeigen.
+Hinweis: Resend läuft im Test-Modus (sendet nur an kai.siegfried@gmail.com) – für echten
 Versand an andere Adressen später eigene Domain bei Resend verifizieren.
+
+## ✅ Anfragen archivieren & löschen (18.06.)
+Im Admin-Bereich können alte Anfragen jetzt **archiviert** (umkehrbar) und **endgültig
+gelöscht** (mit Sicherheits-Rückfrage, z. B. für durchgerutschte Bot-Anfragen) werden.
+- DB: neue Spalte **`archiviert`** (boolean, Standard `false`) in Tabelle `anfragen`.
+  Neue **DELETE-Policy** „Admin darf Anfragen loeschen" für Rolle `authenticated`.
+- `src/app/admin/page.tsx`: neuer Filter **„Archiv"**; übrige Filter blenden archivierte aus.
+- `src/app/admin/anfragen/[id]/page.tsx`: Buttons „Archivieren"/„Aus Archiv holen",
+  abgesetzter Bereich „Endgültig löschen" (mit `window.confirm`), Schild „Archiviert".
 
 ## ⚠️ Dev-Server (wichtig!)
 - Immer nur EINEN `npm run dev` laufen lassen. Bei „Jest worker / EPIPE"-Fehlern oder
