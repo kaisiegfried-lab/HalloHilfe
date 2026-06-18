@@ -30,6 +30,7 @@ type Anfrage = {
   beschreibung: string;
   status: string;
   notiz: string | null;
+  archiviert: boolean;
 };
 
 export default function AnfrageDetailPage() {
@@ -46,6 +47,8 @@ export default function AnfrageDetailPage() {
   const [speichert, setSpeichert] = useState(false);
   const [gespeichert, setGespeichert] = useState(false);
   const [fehler, setFehler] = useState("");
+  // Läuft gerade eine Archivieren- oder Lösch-Aktion? (sperrt diese Buttons)
+  const [arbeitet, setArbeitet] = useState(false);
 
   useEffect(() => {
     async function ladeDaten() {
@@ -99,6 +102,51 @@ export default function AnfrageDetailPage() {
     setGespeichert(true);
   }
 
+  // Archivieren an/aus schalten. Danach zurück zur Übersicht,
+  // wo die Anfrage dann (je nach Filter) aus der Liste verschwindet.
+  async function archivWechseln() {
+    if (!anfrage) return;
+    setArbeitet(true);
+    setFehler("");
+
+    const { error } = await supabase
+      .from("anfragen")
+      .update({ archiviert: !anfrage.archiviert })
+      .eq("id", params.id);
+
+    if (error) {
+      setFehler("Das hat nicht geklappt. Bitte erneut versuchen.");
+      setArbeitet(false);
+      return;
+    }
+
+    router.push("/admin");
+  }
+
+  // Anfrage endgültig löschen – nur nach ausdrücklicher Bestätigung.
+  async function loeschen() {
+    const sicher = window.confirm(
+      "Diese Anfrage wirklich endgültig löschen? Das kann nicht rückgängig gemacht werden.",
+    );
+    if (!sicher) return;
+
+    setArbeitet(true);
+    setFehler("");
+
+    const { error } = await supabase
+      .from("anfragen")
+      .delete()
+      .eq("id", params.id);
+
+    if (error) {
+      setFehler("Löschen hat nicht geklappt. Bitte erneut versuchen.");
+      setArbeitet(false);
+      return;
+    }
+
+    router.push("/admin");
+  }
+
   function datumFormat(iso: string) {
     return new Date(iso).toLocaleDateString("de-DE", {
       day: "2-digit",
@@ -140,6 +188,13 @@ export default function AnfrageDetailPage() {
 
       <h1 className="mt-3 text-3xl font-bold">{anfrage.name}</h1>
       <p className="mt-1 text-tinte-hell">Eingegangen am {datumFormat(anfrage.created_at)}</p>
+
+      {/* Hinweis-Schild, falls diese Anfrage archiviert ist */}
+      {anfrage.archiviert && (
+        <span className="mt-3 inline-block rounded-full bg-creme px-3 py-1 text-sm font-semibold text-tinte">
+          Archiviert
+        </span>
+      )}
 
       {/* Angaben aus der Anfrage (nur lesen) */}
       <dl className="mt-6 flex flex-col gap-3 rounded-xl border border-creme-dunkel bg-white p-5">
@@ -210,6 +265,30 @@ export default function AnfrageDetailPage() {
           className="rounded-xl bg-gold px-6 py-4 text-xl font-bold text-tinte shadow-sm transition-colors hover:bg-gold-dunkel disabled:cursor-not-allowed disabled:opacity-60"
         >
           {speichert ? "Wird gespeichert …" : "Speichern"}
+        </button>
+
+        {/* Archivieren bzw. wieder hervorholen */}
+        <button
+          onClick={archivWechseln}
+          disabled={arbeitet}
+          className="rounded-xl border border-creme-dunkel bg-white px-6 py-4 text-lg font-semibold text-tinte transition-colors hover:bg-creme disabled:cursor-not-allowed disabled:opacity-60"
+        >
+          {anfrage.archiviert ? "Aus Archiv holen" : "Archivieren"}
+        </button>
+      </div>
+
+      {/* Gefahrenbereich: endgültiges Löschen, klar abgesetzt */}
+      <div className="mt-10 border-t border-creme-dunkel pt-6">
+        <p className="mb-3 text-tinte-hell">
+          Endgültig löschen (z.&nbsp;B. bei einer Spam- oder Bot-Anfrage). Das
+          kann nicht rückgängig gemacht werden.
+        </p>
+        <button
+          onClick={loeschen}
+          disabled={arbeitet}
+          className="rounded-xl border-2 border-burgund bg-white px-6 py-3 text-lg font-bold text-burgund transition-colors hover:bg-burgund hover:text-white disabled:cursor-not-allowed disabled:opacity-60"
+        >
+          Endgültig löschen
         </button>
       </div>
     </main>

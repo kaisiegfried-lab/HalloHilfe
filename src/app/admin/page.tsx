@@ -21,6 +21,7 @@ type Anfrage = {
   wunschdatum: string | null;
   beschreibung: string;
   status: string;
+  archiviert: boolean;
 };
 
 // Übersetzt den gespeicherten Status-Wert in einen lesbaren Text.
@@ -40,6 +41,7 @@ const FILTER_OPTIONEN = [
   { wert: "bestaetigt", text: "Bestätigt" },
   { wert: "erledigt", text: "Erledigt" },
   { wert: "abgelehnt", text: "Abgelehnt" },
+  { wert: "archiv", text: "Archiv" },
 ];
 
 export default function AdminDashboardPage() {
@@ -97,8 +99,13 @@ export default function AdminDashboardPage() {
   }
 
   // Nur die Anfragen, die zum aktiven Filter passen.
+  // "Archiv" zeigt die archivierten; alle anderen Filter blenden archivierte aus.
   const gefiltert =
-    filter === "alle" ? anfragen : anfragen.filter((a) => a.status === filter);
+    filter === "archiv"
+      ? anfragen.filter((a) => a.archiviert)
+      : filter === "alle"
+        ? anfragen.filter((a) => !a.archiviert)
+        : anfragen.filter((a) => !a.archiviert && a.status === filter);
 
   if (laedt) {
     return (
@@ -148,9 +155,11 @@ export default function AdminDashboardPage() {
       {/* Hinweis, wenn es (für den Filter) keine Anfragen gibt */}
       {!fehler && gefiltert.length === 0 && (
         <p className="mt-6 text-lg text-tinte-hell">
-          {anfragen.length === 0
-            ? "Es sind noch keine Anfragen vorhanden."
-            : "Keine Anfragen mit diesem Status."}
+          {filter === "archiv"
+            ? "Das Archiv ist leer."
+            : anfragen.length === 0
+              ? "Es sind noch keine Anfragen vorhanden."
+              : "Keine Anfragen mit diesem Status."}
         </p>
       )}
 
