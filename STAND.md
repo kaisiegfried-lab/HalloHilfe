@@ -73,6 +73,17 @@ gelöscht** (mit Sicherheits-Rückfrage, z. B. für durchgerutschte Bot-Anfragen
 - `src/app/admin/anfragen/[id]/page.tsx`: Buttons „Archivieren"/„Aus Archiv holen",
   abgesetzter Bereich „Endgültig löschen" (mit `window.confirm`), Schild „Archiviert".
 
+## ✅ Bestätigungs-Mail an Kunden (19.06.)
+Wer eine Anfrage absendet **und eine E-Mail-Adresse angibt**, bekommt automatisch
+eine freundliche Bestätigung („Anfrage angekommen, melde mich innerhalb von 24 h",
+Absender „Kai Siegfried von HalloHilfe").
+- Nur **eine Datei** geändert: `src/app/api/notify/route.ts` — schickt nach der
+  Admin-Benachrichtigung zusätzlich eine zweite Mail an `a.email` (in try/catch;
+  scheitert sie, bleibt Anfrage + Admin-Mail unberührt, Antwort weiter `ok: true`).
+- Formular unverändert (schickt die Daten ohnehin schon an `/api/notify`).
+- **Achtung Test-Modus:** Kommt beim Kunden erst an, wenn die eigene Domain bei
+  Resend verifiziert ist. Bis dahin Test mit eigener Adresse → zwei Mails erwartet.
+
 ## ⚠️ Dev-Server (wichtig!)
 - Immer nur EINEN `npm run dev` laufen lassen. Bei „Jest worker / EPIPE"-Fehlern oder
   404 auf vorhandenen Routen: alle Server stoppen, `.next` löschen, neu starten.

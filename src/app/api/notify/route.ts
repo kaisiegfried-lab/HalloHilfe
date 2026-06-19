@@ -59,5 +59,56 @@ export async function POST(request: Request) {
     return Response.json({ ok: false }, { status: 502 });
   }
 
+  // Bestätigungs-Mail an den Kunden – nur, wenn er eine E-Mail-Adresse
+  // angegeben hat (das Feld im Formular ist freiwillig). Schlägt sie fehl,
+  // soll das die erfolgreiche Admin-Benachrichtigung NICHT zunichtemachen –
+  // deshalb in try/catch und am Ende trotzdem { ok: true }.
+  //
+  // Hinweis: Solange Resend im Test-Modus läuft, kommt diese Mail nur bei
+  // der verifizierten Adresse an. Echter Versand an Kunden erst nach
+  // Domain-Verifizierung bei Resend.
+  if (a.email) {
+    const bestaetigungText = [
+      `Hallo ${a.name ?? ""},`.trim(),
+      "",
+      "vielen Dank für Ihre Anfrage bei HalloHilfe! Ich habe sie erhalten und",
+      "melde mich persönlich innerhalb von 24 Stunden bei Ihnen – telefonisch",
+      "oder per E-Mail.",
+      "",
+      "Zur Erinnerung, das haben Sie uns geschrieben:",
+      `– Gewünschte Hilfe: ${a.leistung ?? "—"}`,
+      `– Ort: ${a.ort ?? "—"}`,
+      "",
+      "Herzliche Grüße",
+      "Kai Siegfried von HalloHilfe",
+      "",
+      "Hinweis: Diese E-Mail wurde automatisch versendet. Bitte antworten Sie",
+      "nicht direkt darauf.",
+    ].join("\n");
+
+    try {
+      const bestaetigung = await fetch("https://api.resend.com/emails", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${apiKey}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          from: "HalloHilfe <onboarding@resend.dev>",
+          to: a.email,
+          subject: "Ihre Anfrage bei HalloHilfe ist angekommen",
+          text: bestaetigungText,
+        }),
+      });
+
+      if (!bestaetigung.ok) {
+        const fehlertext = await bestaetigung.text();
+        console.error("Bestätigungs-Mail fehlgeschlagen:", fehlertext);
+      }
+    } catch (fehler) {
+      console.error("Bestätigungs-Mail fehlgeschlagen:", fehler);
+    }
+  }
+
   return Response.json({ ok: true });
 }
