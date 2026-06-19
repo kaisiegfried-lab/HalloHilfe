@@ -83,6 +83,8 @@ Absender „Kai Siegfried von HalloHilfe").
 - Formular unverändert (schickt die Daten ohnehin schon an `/api/notify`).
 - **Achtung Test-Modus:** Kommt beim Kunden erst an, wenn die eigene Domain bei
   Resend verifiziert ist. Bis dahin Test mit eigener Adresse → zwei Mails erwartet.
+- **Lokal getestet (19.06.):** Mit `kai.siegfried@gmail.com` im Formular kamen beide
+  Mails an (Admin-Benachrichtigung + Kunden-Bestätigung). Bereit für Deploy zu Vercel.
 
 ## ⚠️ Dev-Server (wichtig!)
 - Immer nur EINEN `npm run dev` laufen lassen. Bei „Jest worker / EPIPE"-Fehlern oder
