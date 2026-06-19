@@ -1,6 +1,6 @@
 # Projektstand HalloHilfe
 
-_Letzter Stand: 18.06.2026_
+_Letzter Stand: 19.06.2026_
 
 ## 🎯 Ziel
 Projekt bis zum **Go-live** bringen. Angepasste Roadmap (11 Meilensteine):
@@ -84,7 +84,10 @@ Absender „Kai Siegfried von HalloHilfe").
 - **Achtung Test-Modus:** Kommt beim Kunden erst an, wenn die eigene Domain bei
   Resend verifiziert ist. Bis dahin Test mit eigener Adresse → zwei Mails erwartet.
 - **Lokal getestet (19.06.):** Mit `kai.siegfried@gmail.com` im Formular kamen beide
-  Mails an (Admin-Benachrichtigung + Kunden-Bestätigung). Bereit für Deploy zu Vercel.
+  Mails an (Admin-Benachrichtigung + Kunden-Bestätigung).
+- **✅ Erledigt & deployt (19.06.):** Nach `main` gemergt (`9048835`) und zu GitHub
+  gepusht → Vercel deployt automatisch. Live-Seite geprüft (HTTP 200, `/api/notify`
+  vorhanden). Damit ist die Bestätigungs-Mail abgeschlossen und online.
 
 ## ⚠️ Dev-Server (wichtig!)
 - Immer nur EINEN `npm run dev` laufen lassen. Bei „Jest worker / EPIPE"-Fehlern oder
