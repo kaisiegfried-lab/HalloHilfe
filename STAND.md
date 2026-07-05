@@ -1,6 +1,6 @@
 # Projektstand HalloHilfe
 
-_Letzter Stand: 05.07.2026_
+_Letzter Stand: 05.07.2026 (KI-IT-Soforthilfe in Planung – siehe unten)_
 
 ## 🎯 Ziel
 Projekt bis zum **Go-live** bringen. Angepasste Roadmap (11 Meilensteine):
@@ -100,6 +100,55 @@ technischen `alert()` jetzt ein **ruhiger Hinweis-Block direkt im Formular**
   (`tel:`) und WhatsApp-Link (`https://wa.me/`), Nummer `+49 151 12345678`.
   Falls sich die Kontaktnummer ändert: an vier Stellen anpassen (je `href` +
   sichtbarer Text).
+
+## 🚧 In Planung: KI-IT-Soforthilfe (05.07.) — NOCH NICHTS GEBAUT
+Neues Feature aus dem PRD (KI-IT-Soforthilfe). Senior:innen tippen eine
+Technikfrage (Handy, Tablet, WhatsApp, E-Mail, WLAN), bekommen eine
+Schritt-für-Schritt-Antwort in einfacher Sprache. Ausführlicher Brief liegt in
+`docs/Aufgabe-Feature-Entscheidung.md` (Thema Kommunikation) — **Achtung:** die
+IT-Hilfe-Stichpunkte kamen zusätzlich im Chat, stehen noch in keiner Datei.
+
+**Architektur-Entscheidungen (von Kai):**
+- **Context Injection zuerst**, RAG (Supabase pgvector) erst bei zu vielen
+  Anleitungen. Deterministisch, nicht agentisch. KEIN Fine-tuning.
+- Context Injection = der **Server** hängt bei jeder Frage automatisch alle
+  Anleitungen + Regeln an den Prompt. Senior:innen geben NUR ihre Frage ein.
+- Modell antwortet **nur** aus den Anleitungen; passt keine → ehrlich sagen +
+  persönlichen Rückruf anbieten (Telefon + Link `/anfrage`).
+- Anleitungen sind einzige Wissensquelle; jede muss Kai **am Gerät geprüft**
+  freigeben, bevor sie live geht.
+
+**Technische Eckdaten (recherchiert via claude-api Skill):**
+- Modell fürs Go-live: **Claude Haiku 4.5** (`claude-haiku-4-5`), $1/$5 pro Mio
+  Tokens, mit Prompt-Caching ~⅓ Cent pro Frage.
+- Structured Output `{ gefunden: boolean, antwort: string, quelle: string|null }`
+  → `gefunden:false` steuert den Fallback. Quelle (Anleitungs-Titel) wird angezeigt.
+- Kostenlimit: `max_tokens`-Cap + Frage-Längenlimit (Rate-Limit später).
+- RAG-Umstieg lohnt ab grob ~50k Tokens / ~30–50 Anleitungen.
+
+**Geänderter Anbieter-Ansatz (weil Kai KEINEN Anthropic-Account hat):**
+- **Vercel AI SDK + Vercel AI Gateway** statt direktem Anthropic-SDK. Modell ist
+  nur ein String → gratis testen (z. B. Gemini free / Gateway-Startguthaben),
+  fürs Go-live per ein-Wort-Änderung auf `anthropic/claude-haiku-4-5` umstellen
+  (dann einmal Zahlungsmethode nötig). Structured Output geht anbieterübergreifend.
+
+**Geplante Schritte (Reihenfolge):**
+1. Ordner `src/content/it-anleitungen/*.md` + 2 Beispiel-Anleitungen (kebab-case,
+   Titel als `# Überschrift`, eine pro Datei).
+2. Loader `src/lib/it-anleitungen.ts` — VORHER Next-16-Guide in
+   `node_modules/next/dist/docs/` lesen (Datei-Tracing auf Vercel prüfen!).
+   Plan B falls Tracing zickt: Anleitungen als getipptes TS-Array.
+3. Server-Route `POST /api/it-hilfe` (AI SDK, Haiku 4.5, Prompt-Caching,
+   Structured Output, `max_tokens`-Limit).
+4. Seite `/it-hilfe` (großes Fragefeld, Antwort + Quelle, burgund/gold/creme),
+   verlinkt von der „Technik"-Karte auf Start-/Leistungsseite.
+5. Fallback + Leitplanken (nur Technik, keine Pflege/Medizin/Recht).
+6. Eval-Skript `scripts/it-hilfe-eval.ts` (abgedeckte + nicht abgedeckte + Grenz-
+   fragen → prüft `gefunden`-Flag & Quelle, dass nichts erfunden wird).
+
+**⏳ OFFEN — Kai muss noch entscheiden (bevor Coden startet):**
+1. Gratis-Modell zum Testen: Vercel AI Gateway (empfohlen) / Google Gemini / Ollama lokal?
+2. Anleitungen: schreibt Claude Entwürfe (Kai prüft) ODER Kai legt sie selbst an?
 
 ## ⚠️ Dev-Server (wichtig!)
 - Immer nur EINEN `npm run dev` laufen lassen. Bei „Jest worker / EPIPE"-Fehlern oder
