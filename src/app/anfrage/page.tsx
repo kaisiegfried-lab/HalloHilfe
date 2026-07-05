@@ -23,10 +23,15 @@ export default function AnfragePage() {
   const [fuerAndere, setFuerAndere] = useState(false);
   // Merkt sich, ob das Formular gerade abgeschickt wird (verhindert Doppelklick).
   const [sendet, setSendet] = useState(false);
+  // Merkt sich, ob das Speichern fehlgeschlagen ist – blendet dann einen
+  // ruhigen Hinweis mit Telefon- und WhatsApp-Rückfallweg ein.
+  const [fehler, setFehler] = useState(false);
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setSendet(true);
+    // Alte Fehlermeldung bei einem erneuten Versuch ausblenden.
+    setFehler(false);
 
     // Eingaben aus dem Formular einsammeln.
     const daten = Object.fromEntries(new FormData(e.currentTarget).entries());
@@ -53,12 +58,10 @@ export default function AnfragePage() {
     });
 
     if (error) {
-      // Bei einem Fehler: Hinweis zeigen und auf der Seite bleiben.
+      // Bei einem Fehler: Hinweis im Formular zeigen und auf der Seite bleiben.
       // .message ausgeben, weil Supabase-Fehler sonst nur als leeres {} erscheinen.
       console.error("Speichern fehlgeschlagen:", error.message);
-      alert(
-        "Es tut uns leid – das Absenden hat nicht geklappt. Bitte versuchen Sie es noch einmal."
-      );
+      setFehler(true);
       setSendet(false);
       return;
     }
@@ -261,6 +264,37 @@ export default function AnfragePage() {
             medizinischen Leistungen und keine Rechtsberatung.
           </span>
         </label>
+
+        {/* Ruhiger Hinweis, falls das Speichern nicht geklappt hat.
+            Bietet einen menschlichen Rückfallweg: Telefon und WhatsApp. */}
+        {fehler && (
+          <div
+            role="alert"
+            className="rounded-xl border border-burgund bg-creme px-4 py-4 text-lg text-tinte"
+          >
+            <p className="font-semibold text-burgund">
+              Das Absenden hat gerade nicht geklappt.
+            </p>
+            <p className="mt-1">
+              Kein Problem – melden Sie sich einfach direkt bei mir, ich helfe
+              Ihnen persönlich weiter:
+            </p>
+            <div className="mt-3 flex flex-col gap-2">
+              <a
+                href="tel:+49XXXXXXXXXX"
+                className="rounded-xl bg-gold px-5 py-3 text-center text-lg font-bold text-tinte transition-colors hover:bg-gold-dunkel"
+              >
+                📞 Anrufen: +49 XXX XXXXXXX
+              </a>
+              <a
+                href="https://wa.me/49XXXXXXXXXX"
+                className="rounded-xl border border-gold px-5 py-3 text-center text-lg font-bold text-burgund transition-colors hover:bg-gold/10"
+              >
+                💬 WhatsApp: +49 XXX XXXXXXX
+              </a>
+            </div>
+          </div>
+        )}
 
         {/* Absenden */}
         <button
