@@ -281,16 +281,16 @@ export default function AnfragePage() {
             </p>
             <div className="mt-3 flex flex-col gap-2">
               <a
-                href="tel:+49XXXXXXXXXX"
+                href="tel:+4915112345678"
                 className="rounded-xl bg-gold px-5 py-3 text-center text-lg font-bold text-tinte transition-colors hover:bg-gold-dunkel"
               >
-                📞 Anrufen: +49 XXX XXXXXXX
+                📞 Anrufen: +49 151 12345678
               </a>
               <a
-                href="https://wa.me/49XXXXXXXXXX"
+                href="https://wa.me/4915112345678"
                 className="rounded-xl border border-gold px-5 py-3 text-center text-lg font-bold text-burgund transition-colors hover:bg-gold/10"
               >
-                💬 WhatsApp: +49 XXX XXXXXXX
+                💬 WhatsApp: +49 151 12345678
               </a>
             </div>
           </div>

@@ -97,9 +97,9 @@ technischen `alert()` jetzt ein **ruhiger Hinweis-Block direkt im Formular**
   `setFehler(false)` am Anfang von `handleSubmit`, im `if (error)`-Zweig
   `setFehler(true)` statt `alert` (das `console.error` bleibt).
 - Der Block bietet einen **menschlichen Rückfallweg**: anklickbarer Telefon-Link
-  (`tel:`) und WhatsApp-Link (`https://wa.me/`).
-- **Achtung:** Beide Nummern sind noch **Platzhalter** (`+49 XXX XXXXXXX`) — Kai
-  ersetzt sie an vier Stellen (je `href` + sichtbarer Text) durch die echte Nummer.
+  (`tel:`) und WhatsApp-Link (`https://wa.me/`), Nummer `+49 151 12345678`.
+  Falls sich die Kontaktnummer ändert: an vier Stellen anpassen (je `href` +
+  sichtbarer Text).
 
 ## ⚠️ Dev-Server (wichtig!)
 - Immer nur EINEN `npm run dev` laufen lassen. Bei „Jest worker / EPIPE"-Fehlern oder
