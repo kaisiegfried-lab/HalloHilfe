@@ -1,6 +1,6 @@
 # Projektstand HalloHilfe
 
-_Letzter Stand: 19.06.2026_
+_Letzter Stand: 05.07.2026_
 
 ## 🎯 Ziel
 Projekt bis zum **Go-live** bringen. Angepasste Roadmap (11 Meilensteine):
@@ -88,6 +88,18 @@ Absender „Kai Siegfried von HalloHilfe").
 - **✅ Erledigt & deployt (19.06.):** Nach `main` gemergt (`9048835`) und zu GitHub
   gepusht → Vercel deployt automatisch. Live-Seite geprüft (HTTP 200, `/api/notify`
   vorhanden). Damit ist die Bestätigungs-Mail abgeschlossen und online.
+
+## ✅ Anfrage: Ruhige Fehlermeldung statt alert() (05.07.)
+Wenn das Speichern einer Anfrage in Supabase fehlschlägt, erscheint statt des
+technischen `alert()` jetzt ein **ruhiger Hinweis-Block direkt im Formular**
+(Markenfarben burgund/gold/creme, `role="alert"`).
+- Nur **eine Datei** geändert: `src/app/anfrage/page.tsx` — neuer State `fehler`,
+  `setFehler(false)` am Anfang von `handleSubmit`, im `if (error)`-Zweig
+  `setFehler(true)` statt `alert` (das `console.error` bleibt).
+- Der Block bietet einen **menschlichen Rückfallweg**: anklickbarer Telefon-Link
+  (`tel:`) und WhatsApp-Link (`https://wa.me/`).
+- **Achtung:** Beide Nummern sind noch **Platzhalter** (`+49 XXX XXXXXXX`) — Kai
+  ersetzt sie an vier Stellen (je `href` + sichtbarer Text) durch die echte Nummer.
 
 ## ⚠️ Dev-Server (wichtig!)
 - Immer nur EINEN `npm run dev` laufen lassen. Bei „Jest worker / EPIPE"-Fehlern oder
