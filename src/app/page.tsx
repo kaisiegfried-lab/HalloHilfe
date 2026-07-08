@@ -61,6 +61,22 @@ export default function Home() {
         <p className="mt-1 text-sm text-tinte-hell">{KLEINE_ERLEDIGUNGEN.kurztext}</p>
       </Link>
 
+      {/* Preise – Transparenz schafft Vertrauen, deshalb prominent verlinkt */}
+      <Link
+        href="/preise"
+        className="mt-3 flex items-center gap-3 rounded-2xl border border-creme-dunkel bg-white p-4 shadow-sm transition-colors hover:border-burgund"
+      >
+        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-creme-dunkel text-xl">
+          <span aria-hidden>💶</span>
+        </div>
+        <div>
+          <h2 className="text-lg font-bold">Preise</h2>
+          <p className="text-sm text-tinte-hell">
+            Transparent und fair – alles auf einen Blick
+          </p>
+        </div>
+      </Link>
+
       {/* 5. Anbieter-Karte – führt zur Über-mich-Seite (Vertrauen schaffen) */}
       <Link
         href="/ueber-mich"

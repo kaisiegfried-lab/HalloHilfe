@@ -59,6 +59,15 @@ export default async function LeistungDetailPage({
         </Link>
       )}
 
+      {/* Weg zur Preisseite – wer die Leistung anschaut, fragt sich als
+          Nächstes, was sie kostet. */}
+      <p className="mt-6 text-tinte-hell">
+        Was kostet das?{" "}
+        <Link href="/preise" className="font-semibold text-burgund underline">
+          Alle Preise ansehen
+        </Link>
+      </p>
+
       <div className="mt-8">
         <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-tinte-hell">
           So erreichen Sie mich
