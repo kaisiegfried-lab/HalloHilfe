@@ -128,6 +128,10 @@ export default function AdminDashboardPage() {
         </button>
       </div>
 
+      <Link href="/admin/it-hilfe-fragen" className="mt-3 inline-block text-burgund underline">
+        IT-Hilfe: gestellte Fragen ansehen →
+      </Link>
+
       {/* Filter-Knöpfe nach Status */}
       <div className="mt-6 flex flex-wrap gap-2">
         {FILTER_OPTIONEN.map((f) => (

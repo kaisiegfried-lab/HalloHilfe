@@ -70,6 +70,14 @@ export default function LeistungenPage() {
               <h2 className="text-xl font-bold">{l.name}</h2>
             </div>
             <p className="mt-2 text-tinte-hell">{l.text}</p>
+            {l.name === "Technik" && (
+              <Link
+                href="/it-hilfe"
+                className="mt-2 inline-block font-semibold text-burgund underline"
+              >
+                Jetzt Technikfrage stellen →
+              </Link>
+            )}
           </div>
         ))}
       </div>

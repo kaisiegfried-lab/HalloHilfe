@@ -21,6 +21,7 @@ const leistungen = [
     icon: "💻",
     name: "Technik",
     text: "Handy, WLAN, Drucker oder Fernseher",
+    href: "/it-hilfe",
   },
   {
     icon: "🚶",
@@ -66,7 +67,7 @@ export default function Home() {
         {leistungen.map((l) => (
           <Link
             key={l.name}
-            href="/leistungen"
+            href={l.href ?? "/leistungen"}
             className="rounded-2xl border border-creme-dunkel bg-white p-4 shadow-sm transition-colors hover:border-burgund"
           >
             <div className="flex h-11 w-11 items-center justify-center rounded-full bg-creme-dunkel text-xl">
