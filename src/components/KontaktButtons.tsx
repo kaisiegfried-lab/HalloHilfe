@@ -11,20 +11,20 @@ export function KontaktButtons() {
     <div className="flex flex-col gap-3">
       <a
         href={TELEFON_LINK}
-        className="flex items-center justify-center gap-2 rounded-xl bg-burgund px-6 py-4 text-center text-xl font-bold text-creme shadow-sm transition-colors hover:bg-burgund-dunkel"
+        className="flex items-center justify-center gap-2 rounded-xl bg-burgund px-6 py-4 text-center text-lg font-bold text-creme shadow-sm transition-colors hover:bg-burgund-dunkel"
       >
         <span aria-hidden>📞</span> Jetzt anrufen: {TELEFON_ANZEIGE}
       </a>
       <div className="grid grid-cols-2 gap-3">
         <a
           href={WHATSAPP_LINK}
-          className="flex items-center justify-center gap-2 rounded-xl bg-green-600 px-3 py-3 text-center text-sm font-bold leading-tight text-white shadow-sm transition-colors hover:bg-green-700"
+          className="flex items-center justify-center gap-2 rounded-xl bg-green-600 px-3 py-3.5 text-center text-base font-semibold leading-tight text-white shadow-sm transition-colors hover:bg-green-700"
         >
           <span aria-hidden>💬</span> WhatsApp schreiben
         </a>
         <Link
           href="/anfrage"
-          className="flex items-center justify-center gap-2 rounded-xl bg-gold px-3 py-3 text-center text-sm font-bold leading-tight text-tinte shadow-sm transition-colors hover:bg-gold-dunkel"
+          className="flex items-center justify-center gap-2 rounded-xl bg-gold px-3 py-3.5 text-center text-base font-semibold leading-tight text-tinte shadow-sm transition-colors hover:bg-gold-dunkel"
         >
           <span aria-hidden>✍️</span> Hilfe anfragen
         </Link>

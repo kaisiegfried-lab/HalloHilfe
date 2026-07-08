@@ -10,19 +10,20 @@ const KLEINE_ERLEDIGUNGEN = LEISTUNGEN.find((l) => l.slug === "kleine-erledigung
 export default function Home() {
   return (
     <main className="mx-auto w-full max-w-md px-5 py-6">
-      {/* 1. Kleine Kopfzeile mit Marke und Erreichbarkeit */}
+      {/* 1. Große Wortmarke statt kleiner Kopfzeile */}
       <div className="text-center">
-        <p className="text-xs font-semibold uppercase tracking-widest text-burgund">
-          HalloHilfe · Konstanz
+        <p className="font-serif text-[2.5rem] font-bold leading-none text-burgund">
+          HalloHilfe
         </p>
-        <p className="mt-1 text-sm text-tinte-hell">Mo–Sa · 8 bis 19 Uhr</p>
+        <div className="mx-auto mt-3 h-[3px] w-14 rounded-full bg-gold" />
+        <p className="mt-3 text-sm font-semibold text-tinte-hell">
+          Konstanz · Mo–Sa · 8 bis 19 Uhr
+        </p>
       </div>
 
       {/* 2. Überschrift */}
-      <h1 className="mt-4 text-center text-3xl font-bold leading-tight">
-        Was kann ich
-        <br />
-        für Sie tun?
+      <h1 className="mt-4 text-center text-xl font-bold leading-tight">
+        Was kann ich für Sie tun?
       </h1>
 
       {/* 3. Drei klar getrennte Kontakt-Buttons: jeder Weg macht sofort klar,
