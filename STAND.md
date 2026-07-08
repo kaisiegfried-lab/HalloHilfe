@@ -1,6 +1,6 @@
 # Projektstand HalloHilfe
 
-_Letzter Stand: 08.07.2026 (KI-IT-Soforthilfe live + Startseite/Leistungsseiten überarbeitet, committed – siehe unten)_
+_Letzter Stand: 08.07.2026 (Preisseite `/preise` live deployt + Preis-Wirtschaftlichkeitsgespräch – siehe unten)_
 
 ## 🎯 Ziel
 Projekt bis zum **Go-live** bringen. Angepasste Roadmap (11 Meilensteine):
@@ -258,6 +258,10 @@ Kilometer-Abrechnung („kein Taxameter-Gefühl"), **kein klassisches Abo**
 - **Getestet (08.07.):** `/preise` lädt und zeigt alle Abschnitte, Links auf
   Startseite/`/leistungen`/Unterseiten vorhanden (per Preview geprüft),
   Konsole ohne Fehler, `eslint src` + `tsc --noEmit` sauber.
+- **✅ Gemergt & deployt (08.07.):** PR #1 (squash) nach `main` gemergt
+  (Commit `fbde932`), Branch `preisseite` gelöscht. Vercel-Auto-Deploy lief
+  durch – **live auf https://hallo-hilfe.vercel.app/preise** geprüft (HTTP 200,
+  alle Preis-Inhalte + Startseiten-Link auf der echten Seite bestätigt).
 - **⏳ Noch zu prüfen (Kai, vor größerer Bewerbung):**
   - Sind 35/40 € und die Paketpreise so gewollt? (Zahlen stehen nur in
     `src/app/preise/page.tsx`, leicht änderbar.)
@@ -267,6 +271,20 @@ Kilometer-Abrechnung („kein Taxameter-Gefühl"), **kein klassisches Abo**
     Der Text auf der Seite ist bewusst vorsichtig formuliert („möglich",
     „Sprechen Sie mich an").
   - Steuerbonus-Hinweis (§ 35a EStG, 20 %) einmal gegenlesen.
+
+## 💬 Preis-/Wirtschaftlichkeitsgespräch (08.07., nur Beratung, kein Code)
+Kai gefragt: „Wie viele Aufträge für 2000 €/Monat netto?" Claude durchgerechnet
+(grobe Annahmen: Ø 35 €/Std., Betriebskosten ~450 €/Monat):
+- **2000 € Gewinn** (vor privater KV + Steuer): ~2.450 € Umsatz → **~70 abgerechnete
+  Std./Monat** → bei Ø 2-Std.-Terminen **~35 Aufträge/Monat (~8/Woche)**.
+- **2000 € echtes Netto aufs Konto** (Haupterwerb, inkl. KV/Pflege ~350–450 € +
+  Einkommensteuer ~200–300 €): ~3.150 € Umsatz → **~90 Std./Monat** →
+  **~45 Aufträge/Monat (~11/Woche)**.
+- Hebel genannt: feste Wochentermine, höherer Stundensatz, längere Termine.
+- **Offene Idee für morgen (falls gewünscht):** kleiner Rechner auf einer
+  **nicht-öffentlichen Admin-Seite**, wo Kai Stundensatz + reale Betriebskosten
+  + KV-Beitrag eintippt und Umsatz/Stunden/Aufträge live sieht. Größte
+  Unsicherheiten in der Rechnung: tatsächlicher KV-Beitrag + Haupt-/Nebenerwerb.
 
 ## ⚠️ Dev-Server (wichtig!)
 - Immer nur EINEN `npm run dev` laufen lassen. Bei „Jest worker / EPIPE"-Fehlern oder
