@@ -238,6 +238,36 @@ bevor deployt wird.
 **Noch offen:** committed, aber (Stand Ende der Sitzung 08.07.) noch nicht
 gepusht/deployt — Kai wollte erst morgen weitermachen.
 
+## ✅ Preisseite `/preise` + Verlinkung (08.07.)
+Transparente Preisliste als eigene Seite, Konzept von Claude als Preis-Experte
+erarbeitet und von Kai zur Umsetzung freigegeben. Kernideen: **ein einfacher
+Stundenpreis statt Preisdschungel**, **Anfahrt als 3 feste Zonen** statt
+Kilometer-Abrechnung („kein Taxameter-Gefühl"), **kein klassisches Abo**
+(Zielgruppe ist abo-skeptisch) – stattdessen Stundenpakete auf Vorkasse und
+„Feste Hilfe" (wöchentlicher Termin, jederzeit kündbar).
+- **Preise:** Alltagshilfe 35 €/Std., Gartenhilfe 40 €/Std., mind. 1 Std.,
+  dann halbstündlich. Anfahrt: Zone 1 (Konstanz/Umgebung) inklusive,
+  Zone 2 (Radolfzell/Singen …) 8 €, Zone 3 (Stockach/Engen/Höri) 15 €.
+  Pakete: 5 Std. 165 €, 10 Std. 320 € (12 Monate gültig). Feste Hilfe:
+  Beispiel 2 Std./Woche = 270 €/Monat, Anfahrt inklusive. IT-Chat kostenlos.
+- **Dateien:** neue Seite `src/app/preise/page.tsx` (Server Component mit
+  eigener Metadata, Zonen als Konstante `ZONEN` in der Datei). Verlinkt von:
+  Startseite (eigene Karte über der Anbieter-Karte), `/leistungen`
+  (Button „Was kostet das?"), jeder Leistungs-Unterseite (Textlink über den
+  Kontakt-Buttons) und Footer in `layout.tsx` (neuer erster Link „Preise").
+- **Getestet (08.07.):** `/preise` lädt und zeigt alle Abschnitte, Links auf
+  Startseite/`/leistungen`/Unterseiten vorhanden (per Preview geprüft),
+  Konsole ohne Fehler, `eslint src` + `tsc --noEmit` sauber.
+- **⏳ Noch zu prüfen (Kai, vor größerer Bewerbung):**
+  - Sind 35/40 € und die Paketpreise so gewollt? (Zahlen stehen nur in
+    `src/app/preise/page.tsx`, leicht änderbar.)
+  - Pflegekassen-Hinweis: Anerkennung als „Unterstützungsangebot im Alltag"
+    (UstA-VO, Regierungspräsidium BW) recherchieren – erst dann können
+    Kund:innen den Entlastungsbetrag (aktuell 131 €/Monat) wirklich einlösen.
+    Der Text auf der Seite ist bewusst vorsichtig formuliert („möglich",
+    „Sprechen Sie mich an").
+  - Steuerbonus-Hinweis (§ 35a EStG, 20 %) einmal gegenlesen.
+
 ## ⚠️ Dev-Server (wichtig!)
 - Immer nur EINEN `npm run dev` laufen lassen. Bei „Jest worker / EPIPE"-Fehlern oder
   404 auf vorhandenen Routen: alle Server stoppen, `.next` löschen, neu starten.

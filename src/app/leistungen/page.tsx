@@ -57,6 +57,14 @@ export default function LeistungenPage() {
         </div>
       </div>
 
+      {/* Hinweis auf die Preisseite – Transparenz direkt bei den Leistungen */}
+      <Link
+        href="/preise"
+        className="mt-6 flex items-center justify-center gap-2 rounded-xl border-2 border-burgund bg-white px-6 py-4 text-center text-lg font-bold text-burgund shadow-sm transition-colors hover:bg-burgund/5"
+      >
+        <span aria-hidden>💶</span> Was kostet das? Preise ansehen
+      </Link>
+
       {/* Rechtliche Abgrenzung */}
       <p className="mt-6 rounded-2xl bg-creme-dunkel p-4 text-sm text-tinte-hell">
         HalloHilfe bietet praktische Alltagshilfe. Es werden <strong>keine
