@@ -119,16 +119,16 @@ export default function ItHilfePage() {
           <p className="mt-1">Melden Sie sich gerne direkt bei mir:</p>
           <div className="mt-3 flex flex-col gap-2">
             <a
-              href="tel:+4915112345678"
+              href="tel:+4917621026928"
               className="rounded-xl bg-gold px-5 py-3 text-center text-lg font-bold text-tinte transition-colors hover:bg-gold-dunkel"
             >
-              📞 Anrufen: +49 151 12345678
+              📞 Anrufen: +49 176 21026928
             </a>
             <a
-              href="https://wa.me/4915112345678"
+              href="https://wa.me/4917621026928"
               className="rounded-xl border border-gold px-5 py-3 text-center text-lg font-bold text-burgund transition-colors hover:bg-gold/10"
             >
-              💬 WhatsApp: +49 151 12345678
+              💬 WhatsApp: +49 176 21026928
             </a>
           </div>
         </div>

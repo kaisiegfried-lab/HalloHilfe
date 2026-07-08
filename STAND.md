@@ -1,6 +1,6 @@
 # Projektstand HalloHilfe
 
-_Letzter Stand: 08.07.2026 (KI-IT-Soforthilfe live getestet + Anleitungen freigegeben, bereit für Deploy – siehe unten)_
+_Letzter Stand: 08.07.2026 (KI-IT-Soforthilfe live + Startseite/Leistungsseiten überarbeitet, committed – siehe unten)_
 
 ## 🎯 Ziel
 Projekt bis zum **Go-live** bringen. Angepasste Roadmap (11 Meilensteine):
@@ -159,10 +159,84 @@ liefert 400 ohne Modellaufruf, Eval-Skript 7/7 bestanden, echte Frage im
 Browser getestet (WhatsApp-Foto) → korrekte Schritt-für-Schritt-Antwort mit
 Quelle. Logging getestet und im Admin-Bereich bestätigt.
 
-**⏳ Als Nächstes:**
-1. Deploy auf Vercel (Env-Var `AI_GATEWAY_API_KEY` dort eintragen, Git push,
-   SQL für `it_hilfe_fragen` auch in der Produktions-Datenbank ausführen falls
-   getrennt von der Dev-Datenbank) — wie immer nur auf Kais Wunsch.
+**✅ Deployt (08.07.):** `AI_GATEWAY_API_KEY` in Vercel eingetragen, Commit
+`643a6f0` gepusht, Deploy erfolgreich. Live-Test bestätigt: `/it-hilfe`
+antwortet korrekt (WhatsApp-Testfrage → richtige Schritt-für-Schritt-Antwort
+mit Quelle).
+
+**⏳ Als Nächstes (niedrige Priorität):**
+- Datums-Stempel "Stand: TT.MM.JJJJ" in den Anleitungs-Dateien ergänzen, damit
+  Kai beim Durchsehen sieht, wie aktuell eine Anleitung ist (WhatsApp & Co.
+  ändern öfter mal ihre Bedienung).
+- Nach ein paar Wochen echten Einsatzes: `/admin/it-hilfe-fragen` durchsehen
+  und neue Anleitungen für häufig nicht gefundene Themen ergänzen.
+
+**🐛 Bekannter offener Bug (08.07., nicht gelöst):** Kai hat live die Frage
+"mein WLAN funktioniert nicht" gestellt und bekam den Rückfallweg
+("keine passende Anleitung") statt der echten WLAN-Anleitung, obwohl diese
+existiert und die exakt gleiche Frage beim Nachtesten korrekt beantwortet
+wurde (`gefunden:true`). Vermutete Ursache: Modell-Nichtdeterminismus
+(kein `temperature`-Wert in `generateObject` gesetzt in `src/lib/it-hilfe.ts`).
+Kais genauer Wortlaut/Kontext beim Vorfall ist unklar geblieben (Rückfrage
+dazu nicht eindeutig beantwortet). **Nächster Schritt:** `/admin/it-hilfe-fragen`
+nach nicht gefundenen WLAN-Fragen durchsuchen, ggf. `temperature` niedriger
+setzen oder System-Prompt großzügiger formulieren.
+
+## ✅ Startseite + Leistungsseiten überarbeitet (08.07.)
+Grund: Kai bemängelte, dass auf der Startseite nicht klar war, was beim
+Antippen der Telefonnummer/des Haupt-Buttons passiert (Button hieß
+"Jetzt Hilfe holen" mit 📞-Symbol, führte aber zum Kontaktformular statt zum
+Anruf). Zusätzlich fehlte ein Weg zu eigenen Unterseiten pro Leistung.
+
+**Kontaktwege neu gestaltet (mehrere Iterationen mit Kai):**
+- Erst 3 gleich große Buttons (Anrufen/WhatsApp/Formular) — dann auf Kais
+  Rückfrage hin nochmal überdacht: für die Zielgruppe (Senior:innen) ist eine
+  Entscheidung zwischen 3 gleichwertigen Optionen unnötige Reibung.
+- **Endgültig:** 1 großer Haupt-Button **"📞 Jetzt anrufen: 07531 2099788"**
+  (vertrauteste Handlung für die Zielgruppe), darunter 2 kleinere,
+  nebeneinander liegende Buttons **"💬 WhatsApp schreiben"** und
+  **"✍️ Hilfe anfragen"** (bewusst mit Verb, damit klar ist was passiert;
+  nicht "Formular" oder "Termin buchen" — Kai/Claude-Entscheidung: "Termin
+  buchen" würde einen festen, automatisch bestätigten Termin suggerieren, den
+  es nicht gibt).
+- Als wiederverwendbare Komponente gebaut: `src/components/KontaktButtons.tsx`
+  + Konstanten in `src/lib/kontakt.ts` (`TELEFON_ANZEIGE`, `TELEFON_LINK`,
+  `WHATSAPP_LINK`) — überall (Startseite, alle Leistungsseiten) nur noch eine
+  Quelle statt kopierter Buttons.
+- **Platzhalter-WhatsApp-Nummer korrigiert:** `+49 151 12345678` (erfunden)
+  → Kais echte Nummer `+49 176 21026928`, an allen 8 Fundstellen in
+  `src/app/anfrage/page.tsx` und `src/app/it-hilfe/page.tsx`.
+
+**Eigene Unterseite pro Leistung (neu):**
+- `src/lib/leistungen.ts` — zentrale Daten (slug, icon, name, kurztext für
+  Kacheln/Übersicht, längerer `text` für die Unterseite, `technikChat`-Flag).
+- `src/app/leistungen/[slug]/page.tsx` — dynamische Route, eine Seite pro
+  Leistung (`/leistungen/einkauf`, `/garten`, `/technik`, `/begleitung`,
+  `/kleine-erledigungen`), mit `generateStaticParams` vorgerendert. Zeigt
+  Icon, Titel, Beschreibungstext, dann `<KontaktButtons />`.
+- **Sonderfall Technik:** zusätzlicher, separat ausgewiesener Button
+  **"⚡ IT-Hilfe-Chat starten"** (→ `/it-hilfe`) — getrennt von den normalen
+  Kontaktwegen, wie von Kai gewünscht.
+- `src/app/leistungen/page.tsx` (Sammelseite) bleibt bestehen als Übersicht,
+  verlinkt jetzt auf die 5 Unterseiten statt alles auf einer Seite zu zeigen.
+  "Sonstige Hilfe" bleibt dort als reiner Hinweis ohne eigene Unterseite.
+  Startseiten-Kacheln verlinken jetzt direkt auf `/leistungen/[slug]` statt
+  (außer Technik) alle auf die generische Sammelseite.
+- Beschreibungstexte für alle 5 Leistungen sind **von Claude nach eigenem
+  Ermessen verfasst** (Kai: "erstelle die Texte selbst nach Gutdünken, was
+  Sinn macht für einen lokalen Anbieter ohne große Spezialfälle") — noch
+  **nicht** von Kai am Gerät gegengelesen wie bei den IT-Anleitungen. Sollte
+  vor größerer Bewerbung (Flyer etc.) einmal überflogen werden.
+
+**Getestet (08.07.):** alle 5 Unterseiten laden (200), ungültiger Slug gibt
+404, Lint + TypeScript sauber, Button-Größen/Hierarchie per Inspect geprüft
+(Anrufen 60px hoch, WhatsApp/Formular ca. 41px — bewusst kleiner als
+sekundäre Optionen). **Noch nicht** im echten Browser von Kai selbst
+durchgeklickt (nur Claude-Preview-Tools) — kurzer eigener Check empfohlen,
+bevor deployt wird.
+
+**Noch offen:** committed, aber (Stand Ende der Sitzung 08.07.) noch nicht
+gepusht/deployt — Kai wollte erst morgen weitermachen.
 
 ## ⚠️ Dev-Server (wichtig!)
 - Immer nur EINEN `npm run dev` laufen lassen. Bei „Jest worker / EPIPE"-Fehlern oder

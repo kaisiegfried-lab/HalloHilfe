@@ -1,94 +1,63 @@
 import Link from "next/link";
+import { LEISTUNGEN } from "@/lib/leistungen";
+import { KontaktButtons } from "@/components/KontaktButtons";
 
-// Telefonnummer zentral definiert – wird an mehreren Stellen genutzt.
-const TELEFON_ANZEIGE = "07531 2099788";
-const TELEFON_LINK = "tel:+4975312099788";
-
-// Leistungen als Daten-Array. So können wir sie später auch auf der
-// Leistungsseite und im Anfrageformular wiederverwenden.
-const leistungen = [
-  {
-    icon: "🛒",
-    name: "Einkauf",
-    text: "Hilfe beim Einkaufen oder kleine Besorgungen",
-  },
-  {
-    icon: "🌿",
-    name: "Garten",
-    text: "Rasenmähen, Gießen, leichte Gartenarbeiten",
-  },
-  {
-    icon: "💻",
-    name: "Technik",
-    text: "Handy, WLAN, Drucker oder Fernseher",
-    href: "/it-hilfe",
-  },
-  {
-    icon: "🚶",
-    name: "Begleitung",
-    text: "Mitfahren oder Begleitung zu Terminen",
-  },
-];
+// Die 4 Hauptkacheln im Raster; "Kleine Erledigungen" bekommt eine eigene,
+// volle Zeile weiter unten.
+const RASTER_KACHELN = LEISTUNGEN.filter((l) => l.slug !== "kleine-erledigungen");
+const KLEINE_ERLEDIGUNGEN = LEISTUNGEN.find((l) => l.slug === "kleine-erledigungen")!;
 
 export default function Home() {
   return (
     <main className="mx-auto w-full max-w-md px-5 py-6">
-      {/* 1. Burgunder Telefon-Box */}
-      <div className="rounded-2xl bg-burgund px-6 py-5 text-center text-creme shadow-md">
-        <p className="text-xs font-semibold uppercase tracking-widest text-gold">
+      {/* 1. Kleine Kopfzeile mit Marke und Erreichbarkeit */}
+      <div className="text-center">
+        <p className="text-xs font-semibold uppercase tracking-widest text-burgund">
           HalloHilfe · Konstanz
         </p>
-        <a
-          href={TELEFON_LINK}
-          className="mt-1 block font-serif text-3xl font-bold tracking-wide"
-        >
-          {TELEFON_ANZEIGE}
-        </a>
-        <p className="mt-1 text-sm text-creme/80">Mo–Sa · 8 bis 19 Uhr</p>
+        <p className="mt-1 text-sm text-tinte-hell">Mo–Sa · 8 bis 19 Uhr</p>
       </div>
 
       {/* 2. Überschrift */}
-      <h1 className="mt-7 text-center text-3xl font-bold leading-tight">
+      <h1 className="mt-4 text-center text-3xl font-bold leading-tight">
         Was kann ich
         <br />
         für Sie tun?
       </h1>
 
-      {/* 3. Goldener Haupt-Button (führt später zum Anfrageformular) */}
-      <Link
-        href="/anfrage"
-        className="mt-5 flex items-center justify-center gap-2 rounded-xl bg-gold px-6 py-4 text-center text-xl font-bold text-tinte shadow-sm transition-colors hover:bg-gold-dunkel"
-      >
-        <span aria-hidden>📞</span> Jetzt Hilfe holen
-      </Link>
+      {/* 3. Drei klar getrennte Kontakt-Buttons: jeder Weg macht sofort klar,
+          was beim Antippen passiert (anrufen, schreiben oder Formular). */}
+      <div className="mt-5">
+        <KontaktButtons />
+      </div>
 
-      {/* 4. Service-Karten */}
+      {/* 4. Service-Karten – jede führt zur eigenen Leistungs-Unterseite */}
       <div className="mt-6 grid grid-cols-2 gap-3">
-        {leistungen.map((l) => (
+        {RASTER_KACHELN.map((l) => (
           <Link
-            key={l.name}
-            href={l.href ?? "/leistungen"}
+            key={l.slug}
+            href={`/leistungen/${l.slug}`}
             className="rounded-2xl border border-creme-dunkel bg-white p-4 shadow-sm transition-colors hover:border-burgund"
           >
             <div className="flex h-11 w-11 items-center justify-center rounded-full bg-creme-dunkel text-xl">
               <span aria-hidden>{l.icon}</span>
             </div>
             <h2 className="mt-3 text-lg font-bold">{l.name}</h2>
-            <p className="mt-1 text-sm text-tinte-hell">{l.text}</p>
+            <p className="mt-1 text-sm text-tinte-hell">{l.kurztext}</p>
           </Link>
         ))}
       </div>
 
       {/* Kleine Erledigungen – über volle Breite */}
       <Link
-        href="/leistungen"
+        href={`/leistungen/${KLEINE_ERLEDIGUNGEN.slug}`}
         className="mt-3 block rounded-2xl border border-creme-dunkel bg-white p-4 shadow-sm transition-colors hover:border-burgund"
       >
         <div className="flex h-11 w-11 items-center justify-center rounded-full bg-creme-dunkel text-xl">
-          <span aria-hidden>📦</span>
+          <span aria-hidden>{KLEINE_ERLEDIGUNGEN.icon}</span>
         </div>
-        <h2 className="mt-3 text-lg font-bold">Kleine Erledigungen</h2>
-        <p className="mt-1 text-sm text-tinte-hell">Botengänge</p>
+        <h2 className="mt-3 text-lg font-bold">{KLEINE_ERLEDIGUNGEN.name}</h2>
+        <p className="mt-1 text-sm text-tinte-hell">{KLEINE_ERLEDIGUNGEN.kurztext}</p>
       </Link>
 
       {/* 5. Anbieter-Karte – führt zur Über-mich-Seite (Vertrauen schaffen) */}
