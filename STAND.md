@@ -1,6 +1,22 @@
 # Projektstand HalloHilfe
 
-_Letzter Stand: 14.07.2026 (WLAN-Bug im IT-Chat behoben – siehe unten; davor: Preisseite `/preise` live deployt + Preis-Wirtschaftlichkeitsgespräch)_
+_Letzter Stand: 14.07.2026 (WLAN-Bug behoben + One-Pager `/vortrag` für den Bootcamp-Abschluss live – siehe unten)_
+
+## 🎓 Bootcamp-Abschluss (finaler Check-In)
+Präsentation Di 28.07. (Kohorte 1) / Mi 29.07. (Kohorte 2). **Harte Frist Do 23.07.:**
+Slot-Liste-Eintrag + One-Pager-Link + Takeaway-Dokument. Format: 10 Min + 5 Min Q&A,
+kein Live-Demo-Zwang. Herzstück der Bewertung: „Bauen mit KI-Coding-Tools".
+- **✅ One-Pager `/vortrag` (14.07.) — LIVE:** https://hallo-hilfe.vercel.app/vortrag
+  Öffentliche, A4-druckbare Präsentationsseite (`robots: noindex`, nicht im Footer
+  verlinkt). Enthält Titel, Kurzbeschreibung, Screenshot der IT-Soforthilfe
+  (WLAN-Antwort), Bio + Foto (`public/vortrag-kai.jpg`) + LinkedIn, Links zu Live +
+  Repo. Screenshot unter `public/vortrag-screenshot.png` – erzeugt per Headless-
+  Chromium-Skript von der Live-Seite (Scratchpad `shot.js`, `playwright-core` via
+  `--no-save`). Repo `kaisiegfried-lab/HalloHilfe` ist jetzt **öffentlich**.
+  Selbständigkeit bewusst NICHT als beschlossen dargestellt (ist hypothetisch/offen).
+- **⏳ Offen:** Slides/Takeaway-Dokument (2. Pflicht-Deliverable) · Slot-Liste-Eintrag
+  (Beschreibung ~130 Wörter steht schon auf `/vortrag`) · Talk-Titel final bestätigen.
+
 
 ## 🎯 Ziel
 Projekt bis zum **Go-live** bringen. Angepasste Roadmap (11 Meilensteine):
