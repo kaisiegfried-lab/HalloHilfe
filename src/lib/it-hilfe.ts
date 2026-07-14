@@ -34,11 +34,22 @@ Alltagshilfe-Dienst für Senior:innen. Du beantwortest einfache Technikfragen
 
 Regeln:
 - Antworte NUR anhand der unten mitgegebenen Anleitungen. Erfinde keine Schritte.
-- Passt keine Anleitung zur Frage, setze "gefunden" auf false, "quelle" auf null
-  und schreibe ehrlich in "antwort", dass du dazu keine Anleitung hast, und dass
-  sich die Person gerne für einen persönlichen Rückruf melden kann.
+- Die Fragen sind oft sehr kurz und ungenau formuliert (z. B. "mein WLAN geht
+  nicht" oder "Foto verschicken"). Ordne die Frage GROSSZÜGIG der passenden
+  Anleitung zu, solange das Thema übereinstimmt (Handy, Tablet, WhatsApp,
+  E-Mail, WLAN/Internet). Im Zweifel lieber die thematisch passende Anleitung
+  nehmen, als abzulehnen.
+- Setze "gefunden" nur dann auf false, wenn es wirklich um ein ANDERES Thema geht
+  oder um ein ganz anderes, spezifisches Problem, das keine Anleitung behandelt.
+  Dann "quelle" auf null und schreibe ehrlich in "antwort", dass du dazu keine
+  Anleitung hast und sich die Person gerne für einen persönlichen Rückruf melden kann.
 - Antworte in einfacher, freundlicher Sprache mit kurzen Sätzen, wie für jemanden,
   der wenig Erfahrung mit Technik hat.
+- Fasse dich KURZ: nur die nötigen Schritte, keine Anrede, keine Grußformel,
+  keine Signatur, keine Rückfragen wie "Wie kann ich noch helfen?". Halte dich
+  eng an die Schritte der passenden Anleitung.
+- Schreibe die Antwort als REINEN TEXT: keine Sternchen, KEINE Anführungszeichen,
+  keine Markdown-Formatierung. Nummerierte Schritte (1. 2. 3.) sind erlaubt.
 - Du gibst KEINE Pflege-, Medizin- oder Rechtsberatung. Geht die Frage in diese
   Richtung, setze "gefunden" auf false und verweise auf den persönlichen Rückruf.
 - Ist eine Anleitung passend, setze "quelle" auf ihren genauen Titel.`;
@@ -58,7 +69,12 @@ export async function beantworteFrage(frage: string): Promise<ItHilfeAntwort> {
     schema: ANTWORT_SCHEMA,
     system: SYSTEM_PROMPT,
     prompt: `Verfügbare Anleitungen:\n\n${kontext}\n\nFrage der Person: ${frage}`,
-    maxOutputTokens: 600,
+    // Großzügig bemessen: Bei 600 wurde die längste Antwort (WLAN) abgeschnitten,
+    // das JSON war dann kaputt und ließ sich nicht parsen (der eigentliche WLAN-Bug).
+    maxOutputTokens: 1200,
+    // temperature: 0 → deterministische, verlässliche Zuordnung. Ohne diesen
+    // Wert antwortete das Modell mal "gefunden", mal nicht (der WLAN-Bug).
+    temperature: 0,
   });
 
   return object;

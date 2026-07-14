@@ -21,6 +21,18 @@ const TESTFAELLE: Testfall[] = [
     erwartetGefunden: true,
     erwarteteQuelle: "WLAN am Handy oder Tablet neu verbinden",
   },
+  // Regressionstest: kurze, vage Formulierungen müssen trotzdem zuordnen.
+  // Genau diese Frage lieferte live fälschlich den Rückfallweg (WLAN-Bug).
+  {
+    frage: "mein WLAN funktioniert nicht",
+    erwartetGefunden: true,
+    erwarteteQuelle: "WLAN am Handy oder Tablet neu verbinden",
+  },
+  {
+    frage: "Internet geht nicht",
+    erwartetGefunden: true,
+    erwarteteQuelle: "WLAN am Handy oder Tablet neu verbinden",
+  },
   {
     frage: "Ich habe eine E-Mail mit einem PDF bekommen, wie öffne ich das?",
     erwartetGefunden: true,

@@ -1,6 +1,6 @@
 # Projektstand HalloHilfe
 
-_Letzter Stand: 08.07.2026 (Preisseite `/preise` live deployt + Preis-Wirtschaftlichkeitsgespräch – siehe unten)_
+_Letzter Stand: 14.07.2026 (WLAN-Bug im IT-Chat behoben – siehe unten; davor: Preisseite `/preise` live deployt + Preis-Wirtschaftlichkeitsgespräch)_
 
 ## 🎯 Ziel
 Projekt bis zum **Go-live** bringen. Angepasste Roadmap (11 Meilensteine):
@@ -171,16 +171,23 @@ mit Quelle).
 - Nach ein paar Wochen echten Einsatzes: `/admin/it-hilfe-fragen` durchsehen
   und neue Anleitungen für häufig nicht gefundene Themen ergänzen.
 
-**🐛 Bekannter offener Bug (08.07., nicht gelöst):** Kai hat live die Frage
-"mein WLAN funktioniert nicht" gestellt und bekam den Rückfallweg
-("keine passende Anleitung") statt der echten WLAN-Anleitung, obwohl diese
-existiert und die exakt gleiche Frage beim Nachtesten korrekt beantwortet
-wurde (`gefunden:true`). Vermutete Ursache: Modell-Nichtdeterminismus
-(kein `temperature`-Wert in `generateObject` gesetzt in `src/lib/it-hilfe.ts`).
-Kais genauer Wortlaut/Kontext beim Vorfall ist unklar geblieben (Rückfrage
-dazu nicht eindeutig beantwortet). **Nächster Schritt:** `/admin/it-hilfe-fragen`
-nach nicht gefundenen WLAN-Fragen durchsuchen, ggf. `temperature` niedriger
-setzen oder System-Prompt großzügiger formulieren.
+**✅ WLAN-Bug behoben (14.07.):** Der Regressionstest im Eval-Skript hat die
+*echte* Ursache aufgedeckt — es war NICHT (nur) Nichtdeterminismus, sondern eine
+**abgeschnittene Antwort**: Die WLAN-Anleitung ist die längste, ihre Antwort
+sprengte das Token-Limit (`maxOutputTokens: 600`), das JSON wurde mittendrin
+abgeschnitten → `generateObject` konnte nicht parsen → die Route fing den Fehler
+ab und zeigte den Rückfallweg. Zweite, tieferliegende Schwachstelle: Das Modell
+schrieb die Antwort als JSON von Hand und verschluckte sich an geraden
+Anführungszeichen (`„WLAN"`) und `**`-Markdown → kaputtes JSON.
+**Fix in `src/lib/it-hilfe.ts`:** (1) `temperature: 0` (deterministisch),
+(2) `maxOutputTokens: 1200`, (3) System-Prompt großzügiger bei kurzen/vagen
+Fragen + Antwort als REINER TEXT (keine Anführungszeichen/Markdown) — behebt
+zugleich einen UX-Fehler (die Seite rendert kein Markdown, zeigte also vorher
+literal `**Einstellungen**`). Regressionstests „mein WLAN funktioniert nicht"
+und „Internet geht nicht" ins Eval-Skript aufgenommen.
+**Verifiziert (14.07.):** `npm run eval:it-hilfe` 9/9 bestanden, Lint + `tsc`
+sauber, Live im Browser getestet → korrekte Schritt-für-Schritt-Antwort mit
+Quelle. **Noch nicht committet/deployt.**
 
 ## ✅ Startseite + Leistungsseiten überarbeitet (08.07.)
 Grund: Kai bemängelte, dass auf der Startseite nicht klar war, was beim
