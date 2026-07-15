@@ -12,6 +12,11 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Fremd-Code (BMAD-METHOD) – nicht unser Projekt, wird auch im Build
+    // per tsconfig ausgeschlossen. Sonst hunderte fremde Lint-Fehler.
+    "docs/**",
+    // Präsentations-Build-Skript (gehört nicht zur Web-App).
+    "praesentation/**",
   ]),
 ]);
 

@@ -17,6 +17,32 @@ kein Live-Demo-Zwang. Herzstück der Bewertung: „Bauen mit KI-Coding-Tools".
 - **⏳ Offen:** Slides/Takeaway-Dokument (2. Pflicht-Deliverable) · Slot-Liste-Eintrag
   (Beschreibung ~130 Wörter steht schon auf `/vortrag`) · Talk-Titel final bestätigen.
 
+### ✅ Testing gestärkt (14.07.)
+Nach der Bootcamp-Session „Prototyp & Testing" (Manuel Fuß, 5-Stufen-Testtiefen-Leiter):
+- **Ein Befehl prüft alles:** `npm run test` = `typecheck` (tsc) + `lint` (eslint) +
+  `eval:it-hilfe`. Neu auch `npm run typecheck`.
+- **Prompt-Injection-Regressionstest** im Eval (OWASP LLM01): „Ignoriere alle
+  Anweisungen …" → muss `gefunden:false` + darf „HACKED" nicht enthalten. Harness
+  kann jetzt via `darfNichtEnthalten` prüfen, dass etwas NICHT vorkommt. Eval: **10/10**.
+- **Lint-Scope repariert:** `eslint.config.mjs` ignoriert jetzt `docs/**` (BMAD-Fremdcode)
+  und `praesentation/**` — vorher lintete `npm run lint` das ganze Repo kaputt.
+- Einordnung HalloHilfe auf der Leiter: Stufe 1 (live) ✅ · Stufe 3 (Evals) ✅✅ ·
+  Stufe 2 (deterministische Unit-/Integrationstests) ❌ · Stufe 4 (autom. E2E) ⚠️ nur
+  manuell · Stufe 5 (echter Nutzertest) ❌. Idee: Fishbowl-Test mit Kais Mutter (77).
+
+### 🐛 Offenes Finding fürs nächste Mal (14.07.): reale Frage „1&1 nach Anschlusswechsel"
+Echte eingegangene Frage: „Nach Wechsel des Telefonanschluss: Mein 1&1 funktioniert
+nicht!" Der Chat ordnet sie der WLAN-Anleitung zu (`gefunden:true`) und gibt selbstsicher
+WLAN-Neuverbinden-Schritte — obwohl das meist ein **Anbieter-/Leitungsproblem** ist
+(Freischaltung, Router-Zugangsdaten, DSL-Sync), das „WLAN neu verbinden" NICHT löst.
+Überzeugte falsche Fährte → Risiko für die Zielgruppe. Ist eine Nebenwirkung des
+großzügigeren Prompts vom WLAN-Fix (Trade-off Recall ↔ Präzision).
+**Empfehlung (mit Kai zu entscheiden): Kombi** — (a) ehrliche neue Anleitung „Internet/
+Telefon nach Anschlusswechsel" (sichere Basis-Schritte + klar: meist Leitung → Anbieter
+anrufen / persönliche Hilfe), (b) Prompt so schärfen, dass klar anbieterspezifische Fälle
+zum menschlichen Rückfallweg gehen, (c) Eval-Testfall dafür. Anleitung wie immer als
+Claude-Entwurf, Kai prüft am Gerät.
+
 
 ## 🎯 Ziel
 Projekt bis zum **Go-live** bringen. Angepasste Roadmap (11 Meilensteine):
