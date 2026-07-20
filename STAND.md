@@ -30,7 +30,17 @@ Nach der Bootcamp-Session „Prototyp & Testing" (Manuel Fuß, 5-Stufen-Testtief
   Stufe 2 (deterministische Unit-/Integrationstests) ❌ · Stufe 4 (autom. E2E) ⚠️ nur
   manuell · Stufe 5 (echter Nutzertest) ❌. Idee: Fishbowl-Test mit Kais Mutter (77).
 
-### 🐛 Offenes Finding fürs nächste Mal (14.07.): reale Frage „1&1 nach Anschlusswechsel"
+### ✅ Finding gelöst (14.07.): reale Frage „1&1 nach Anschlusswechsel"
+**Gelöst per Kombi:** Neue Anleitung `src/content/it-anleitungen/internet-nach-anschlusswechsel.md`
+(anbieter-neutral, ehrlich: sichere Basis-Schritte + Verweis auf Anbieter-Hotline/persönliche
+Hilfe) — erstellt via **Sub-Agents** (`anleitung-autor` → `senioren-pruefer`, bestanden).
+Beim Einbauen wanderte „Internet geht nicht" fälschlich zur neuen Anleitung → mit einer
+Unterscheidungs-Regel im System-Prompt (`src/lib/it-hilfe.ts`) gelöst: Anschlusswechsel-Anleitung
+nur bei erwähntem Wechsel/Umzug, sonst WLAN. Eval-Testfall ergänzt → **11/11**.
+**⏳ Noch offen:** von Kai am Gerät gegenlesen (wie bei den anderen Anleitungen); committen + deployen.
+Historischer Kontext des Findings unten:
+
+
 Echte eingegangene Frage: „Nach Wechsel des Telefonanschluss: Mein 1&1 funktioniert
 nicht!" Der Chat ordnet sie der WLAN-Anleitung zu (`gefunden:true`) und gibt selbstsicher
 WLAN-Neuverbinden-Schritte — obwohl das meist ein **Anbieter-/Leitungsproblem** ist

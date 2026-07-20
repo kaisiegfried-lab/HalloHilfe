@@ -39,6 +39,10 @@ Regeln:
   Anleitung zu, solange das Thema übereinstimmt (Handy, Tablet, WhatsApp,
   E-Mail, WLAN/Internet). Im Zweifel lieber die thematisch passende Anleitung
   nehmen, als abzulehnen.
+- Bei Internet-/Verbindungsproblemen unterscheide genau: Nur wenn ein kürzlicher
+  Anschlusswechsel, Umzug oder Anbieterwechsel erwähnt wird (z. B. "1&1 geht nach
+  dem Anschlusswechsel nicht"), nimm die Anleitung zum Anschlusswechsel. Sonst
+  (allgemeines "Internet geht nicht" oder "WLAN geht nicht") nimm die WLAN-Anleitung.
 - Setze "gefunden" nur dann auf false, wenn es wirklich um ein ANDERES Thema geht
   oder um ein ganz anderes, spezifisches Problem, das keine Anleitung behandelt.
   Dann "quelle" auf null und schreibe ehrlich in "antwort", dass du dazu keine

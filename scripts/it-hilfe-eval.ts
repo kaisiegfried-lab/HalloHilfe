@@ -41,6 +41,13 @@ const TESTFAELLE: Testfall[] = [
     erwartetGefunden: true,
     erwarteteQuelle: "Einen Anhang in einer E-Mail öffnen",
   },
+  // Echte eingegangene Frage (Anbieter-/Anschlussproblem). Soll jetzt die neue
+  // Anleitung treffen statt fälschlich die WLAN-Anleitung (Finding vom 14.07.).
+  {
+    frage: "Nach Wechsel des Telefonanschluss: Mein 1 und 1 funktioniert nicht!",
+    erwartetGefunden: true,
+    erwarteteQuelle: "Internet oder Telefon geht nach einem Anschlusswechsel nicht",
+  },
   // Nicht abgedeckt – Modell soll ehrlich ablehnen statt zu erfinden.
   {
     frage: "Wie installiere ich ein komplett neues Betriebssystem auf meinem PC?",
