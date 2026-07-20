@@ -14,8 +14,16 @@ kein Live-Demo-Zwang. Herzstück der Bewertung: „Bauen mit KI-Coding-Tools".
   Chromium-Skript von der Live-Seite (Scratchpad `shot.js`, `playwright-core` via
   `--no-save`). Repo `kaisiegfried-lab/HalloHilfe` ist jetzt **öffentlich**.
   Selbständigkeit bewusst NICHT als beschlossen dargestellt (ist hypothetisch/offen).
-- **⏳ Offen:** Slides/Takeaway-Dokument (2. Pflicht-Deliverable) · Slot-Liste-Eintrag
-  (Beschreibung ~130 Wörter steht schon auf `/vortrag`) · Talk-Titel final bestätigen.
+- **✅ Slides/Takeaway (14.07.):** `praesentation/praesentation-entwurf.md` (Story +
+  Sprechernotizen, 7-Punkte-Struktur, einfache Sprache) und daraus der fertige
+  Foliensatz `praesentation/HalloHilfe-Abschluss.pptx` (9 Folien, Markenfarben,
+  Notizen je Folie, Screenshot eingebettet). **Import:** .pptx in Google Drive →
+  mit Google Slides öffnen. Erzeugt mit `pptxgenjs` (Scratchpad-Skript `gen-slides.js`).
+  **⏳ Noch:** visueller Feincheck in Google Slides (hier keine Bild-Render-Tools),
+  Talk-Titel final, dann üben.
+- **⏳ Offen (deine To-dos):** Slot-Liste-Eintrag bis **23.07.** (Beschreibung
+  ~130 Wörter steht auf `/vortrag`) · neue Anleitung `internet-nach-anschlusswechsel.md`
+  am Gerät gegenlesen · Generalprobe mit Timer.
 
 ### ✅ Testing gestärkt (14.07.)
 Nach der Bootcamp-Session „Prototyp & Testing" (Manuel Fuß, 5-Stufen-Testtiefen-Leiter):
